@@ -1968,7 +1968,7 @@ namespace IlyfairyLib.WinApi.User32
         public static extern BOOL EnumDisplayMonitors([HDC, _In_opt_] IntPtr hdc, [LPCRECT, _In_opt_] in RECT lprcClip, [MONITORENUMPROC, _In_] MonitorEnumProc lpfnEnum, [LPARAM, _In_] IntPtr dwData);
 
         #region EnumDisplaySettings
-        [DllImport("user32.dll",CharSet = CharSet.Ansi)]
+        [DllImport("user32.dll", CharSet = CharSet.Ansi)]
         [return: BOOL]
         public static extern BOOL EnumDisplaySettingsA([LPCSTR, _In_opt_] byte[] lpszDeviceName, [DWORD, _In_] uint iModeNum, [DEVMODEA, Ptr, _Inout_] ref DEVMODEA lpDevMode);
 
@@ -1986,7 +1986,7 @@ namespace IlyfairyLib.WinApi.User32
         #endregion
 
         #region EnumWindowStations
-        [DllImport("user32.dll",CharSet = CharSet.Ansi)]
+        [DllImport("user32.dll", CharSet = CharSet.Ansi)]
         [return: BOOL]
         public static extern BOOL EnumWindowStationsA([WINSTAENUMPROCA, _In_] NameEnumProcA lpEnumFunc, [LPARAM, _In_] IntPtr lParam);
 
@@ -2018,7 +2018,7 @@ namespace IlyfairyLib.WinApi.User32
         public static extern BOOL GetCIMSSM([INPUT_MESSAGE_SOURCE, Ptr, _Out_] out InputMessageSource inputMessageSource);
 
         #region DefFrameProc
-        [DllImport("user32.dll",CharSet = CharSet.Ansi)]
+        [DllImport("user32.dll", CharSet = CharSet.Ansi)]
         [return: LRESULT]
         public static extern IntPtr DefFrameProcA([HWND, _In_] IntPtr hWnd, [HWND, _In_opt_] IntPtr hWndMDIClient, [UINT, _In_] uint uMsg, [WPARAM, _In_] IntPtr wParam, [LPARAM, _In_] IntPtr lParam);
 
@@ -2030,11 +2030,11 @@ namespace IlyfairyLib.WinApi.User32
         #region DefMDIChildProc
         [DllImport("user32.dll", CharSet = CharSet.Ansi)]
         [return: LRESULT]
-        public static extern IntPtr DefMDIChildProcA([HWND, _In_] IntPtr hWnd, [UINT, _In_] IntPtr uMsg, [UINT, _In_] uint uMsg, [WPARAM, _In_] IntPtr wParam, [LPARAM, _In_] IntPtr lParam);
+        public static extern IntPtr DefMDIChildProcA([HWND, _In_] IntPtr hWnd, [UINT, _In_] IntPtr uMsg, [WPARAM, _In_] IntPtr wParam, [LPARAM, _In_] IntPtr lParam);
 
         [DllImport("user32.dll", CharSet = CharSet.Unicode)]
         [return: LRESULT]
-        public static extern IntPtr DefMDIChildProcW([HWND, _In_] IntPtr hWnd, [UINT, _In_] IntPtr uMsg, [UINT, _In_] uint uMsg, [WPARAM, _In_] IntPtr wParam, [LPARAM, _In_] IntPtr lParam);
+        public static extern IntPtr DefMDIChildProcW([HWND, _In_] IntPtr hWnd, [UINT, _In_] IntPtr uMsg, [WPARAM, _In_] IntPtr wParam, [LPARAM, _In_] IntPtr lParam);
         #endregion
 
         #region DefDlgProc
@@ -2051,16 +2051,147 @@ namespace IlyfairyLib.WinApi.User32
         [return: LRESULT]
         public static extern IntPtr DefRawInputProc([PRAWINPUT, Ptr, _In_reads_] RawInput[] paRawInput, [INT, _In_] int nInput, [UINT, _In_] uint cbSizeHeader);
 
+        #region DialogBoxIndirectParam
+        [DllImport("user32.dll", CharSet = CharSet.Ansi)]
+        [return: INT_PTR]
+        public static extern IntPtr DialogBoxIndirectParamA([HINSTANCE, _In_opt_] IntPtr hInstance, [LPCDLGTEMPLATEA, _In_] in DlgTemplate hDialogTemplate, [HWND, _In_opt_] IntPtr hWndParent, [DLGPROC, _In_opt_] DLGProc lpDialogFunc, [LPARAM, _In_] IntPtr dwInitParam);
 
+        [DllImport("user32.dll", CharSet = CharSet.Unicode)]
+        [return: INT_PTR]
+        public static extern IntPtr DialogBoxIndirectParamW([HINSTANCE, _In_opt_] IntPtr hInstance, [LPCDLGTEMPLATEW, _In_] in DlgTemplate hDialogTemplate, [HWND, _In_opt_] IntPtr hWndParent, [DLGPROC, _In_opt_] DLGProc lpDialogFunc, [LPARAM, _In_] IntPtr dwInitParam);
+        #endregion
 
+        #region DialogBoxParam
+        [DllImport("user32.dll", CharSet = CharSet.Ansi)]
+        [return: INT_PTR]
+        public static extern IntPtr DialogBoxParamA([HINSTANCE, _In_opt_] IntPtr hInstance, [LPCSTR, _In_] byte[] lpTemplateName, [HWND, _In_opt_] IntPtr hWndParent, [DLGPROC, _In_opt_] DLGProc lpDialogFunc, [LPARAM, _In_] IntPtr dwInitParam);
 
+        [DllImport("user32.dll", CharSet = CharSet.Unicode)]
+        [return: INT_PTR]
+        public static extern IntPtr DialogBoxParamW([HINSTANCE, _In_opt_] IntPtr hInstance, [LPCSTR, _In_] string lpTemplateName, [HWND, _In_opt_] IntPtr hWndParent, [DLGPROC, _In_opt_] DLGProc lpDialogFunc, [LPARAM, _In_] IntPtr dwInitParam);
+        #endregion
 
+        [DllImport("user32.dll")]
+        [return: VOID]
+        public static extern void DisableProcessWindowsGhosting();
 
+        [DllImport("user32.dll")]
+        [return: LONG]
+        public static extern int DisplayConfigGetDeviceInfo([DISPLAYCONFIG_DEVICE_INFO_HEADER, Ptr, _Inout_] ref DisplayConfigDeviceInfoHeader requestPacket);
 
+        [DllImport("user32.dll")]
+        [return: LONG]
+        public static extern int DisplayConfigSetDeviceInfo([DISPLAYCONFIG_DEVICE_INFO_HEADER, Ptr, _In_] in DisplayConfigDeviceInfoHeader setPacket);
 
+        #region DlgDirSelectComboBoxEx
+        [DllImport("user32.dll", CharSet = CharSet.Ansi)]
+        [return: BOOL]
+        public static extern BOOL DlgDirSelectComboBoxExA([HWND, _In_] IntPtr hwndDlg, [LPSTR, _Out_writes_] byte[] lpString, [_In_] int cchOut, [_In_] int idComboBox);
 
+        [DllImport("user32.dll", CharSet = CharSet.Unicode)]
+        [return: BOOL]
+        public static extern BOOL DlgDirSelectComboBoxExW([HWND, _In_] IntPtr hwndDlg, [LPWSTR, _Out_writes_] StringBuilder lpString, [_In_] int cchOut, [_In_] int idComboBox);
+        #endregion
 
+        #region DlgDirSelectEx
+        [DllImport("user32.dll", CharSet = CharSet.Ansi)]
+        [return: BOOL]
+        public static extern BOOL DlgDirSelectExA([HWND, _In_] IntPtr hwndDlg, [LPSTR, _Out_writes_] byte[] lpString, [_In_] int chCount, [_In_] int idListBox);
+
+        [DllImport("user32.dll", CharSet = CharSet.Unicode)]
+        [return: BOOL]
+        public static extern BOOL DlgDirSelectExW([HWND, _In_] IntPtr hwndDlg, [LPWSTR, _Out_writes_] StringBuilder lpString, [_In_] int chCount, [_In_] int idListBox);
+        #endregion
+
+        [DllImport("user32.dll")]
+        [return: BOOL]
+        public static extern BOOL DragDetect([HWND, _In_] IntPtr hwnd, [POINT, _In_] POINT pt);
+
+        [DllImport("user32.dll")]
+        [return: DWORD]
+        public static extern uint DragObject([HWND, _In_] IntPtr hwndParent, [HWND, _In_] IntPtr hwndFrom, [UINT, _In_] uint fmt, [ULONG_PTR, _In_] UIntPtr data, [HCURSOR, _In_opt_] IntPtr hcur);
+
+        [DllImport("user32.dll")]
+        [return: BOOL]
+        public static extern BOOL DrawAnimatedRects([HWND, _In_opt_] IntPtr hwnd, [_In_] int idAni, [RECT, Ptr, CONST, _In_] in RECT lprcFrom, [RECT, Ptr, CONST, _In_] in RECT lprcTo);
+
+        [DllImport("user32.dll")]
+        [return: BOOL]
+        public static extern BOOL EnableScrollBar([HWND, _In_] IntPtr hWnd, [UINT, _In_] uint wSBflags, [UINT, _In_] uint wArrows);
+
+        [DllImport("user32.dll")]
+        public static extern int GetDialogBaseUnits();
+
+        [DllImport("user32.dll")]
+        public static extern int GetDlgCtrlID([HWND, _In_] IntPtr hWnd);
+
+        [DllImport("user32.dll")]
+        [return: HWND]
+        public static extern IntPtr GetDlgItem([HWND, _In_opt_] IntPtr hDlg, [_In_] int nIDDlgItem);
+
+        [DllImport("user32.dll")]
+        [return: UINT]
+        public static extern uint GetDpiForSystem();
+
+        [DllImport("user32.dll")]
+        [return: UINT]
+        public static extern uint GetDpiForWindow([HWND, _In_] IntPtr hwnd);
+
+        [DllImport("user32.dll")]
+        [return: UINT]
+        public static extern uint GetDlgItemInt([HWND, _In_] IntPtr hDlg, [_In_] int nIDDlgItem, [BOOL, Ptr, _Out_opt_] out BOOL lpTranslated, [BOOL, _In_] BOOL bSigned);
+
+        #region SetDlgItemText
+        [DllImport("user32.dll", CharSet = CharSet.Ansi)]
+        [return: BOOL]
+        public static extern BOOL SetDlgItemTextA([HWND, _In_] IntPtr hDlg, [_In_] int nIDDlgItem, [LPCSTR, _In_] byte[] lpString);
+
+        [DllImport("user32.dll", CharSet = CharSet.Unicode)]
+        [return: BOOL]
+        public static extern BOOL SetDlgItemTextW([HWND, _In_] IntPtr hDlg, [_In_] int nIDDlgItem, [LPCWSTR, _In_] string lpString);
+        #endregion
+
+        #region GetDlgItemText
+        [DllImport("user32.dll", CharSet = CharSet.Ansi)]
+        [return: UINT]
+        public static extern uint GetDlgItemTextA([HWND, _In_] IntPtr hDlg, [_In_] int nIDDlgItem, [LPSTR, _Out_writes_] byte[] lpString, [_In_] int cchMax);
+
+        [DllImport("user32.dll", CharSet = CharSet.Unicode)]
+        [return: UINT]
+        public static extern uint GetDlgItemTextW([HWND, _In_] IntPtr hDlg, [_In_] int nIDDlgItem, [LPWSTR, _Out_writes_] string lpString, [_In_] int cchMax);
+        #endregion
+
+        [DllImport("user32.dll")]
+        [return: BOOL]
+        public static extern BOOL SetDoubleClickTime([UINT, _In_] uint arg1);
+
+        [DllImport("user32.dll")]
+        [return: BOOL]
+        public static extern BOOL SetGestureConfig([HWND, _In_] IntPtr hwnd, [DWORD, _In_] uint dwReserved, [UINT, _In_] uint cIDs, [PGESTURECONFIG, _In_reads_] GestureConfig[] pGestureConfig, [UINT, _In_] uint cbSize);
+
+        [DllImport("user32.dll")]
+        [return: VOID]
+        public static extern void SetDebugErrorLevel([DWORD, _In_] uint dwLevel);
+
+        [DllImport("user32.dll")]
+        [return: BOOL]
+        public static extern BOOL SetDialogControlDpiChangeBehavior([HWND, _In_] IntPtr hWnd, [DIALOG_CONTROL_DPI_CHANGE_BEHAVIORS, _In_] DialogControlDpiChangeBehaviors mask, [DIALOG_CONTROL_DPI_CHANGE_BEHAVIORS, _In_] DialogControlDpiChangeBehaviors values);
+
+        [DllImport("user32.dll")]
+        [return: BOOL]
+        public static extern BOOL SetDialogDpiChangeBehavior([HWND, _In_] IntPtr hDlg, [DIALOG_DPI_CHANGE_BEHAVIORS, _In_] DialogDpiChangeBehaviors mask, [DIALOG_DPI_CHANGE_BEHAVIORS, _In_] DialogDpiChangeBehaviors values);
+
+        [DllImport("user32.dll")]
+        [return: BOOL]
+        public static extern BOOL SetDisplayAutoRotationPreferences([ORIENTATION_PREFERENCE, _In_] OrientationPreference orientation);
+
+        [DllImport("user32.dll")]
+        [return: LONG]
+        public static extern int SetDisplayConfig([UINT32, _In_] uint numPathArrayElements, [DISPLAYCONFIG_PATH_INFO, Ptr, _In_reads_opt_] DISPLAYCONFIG_PATH_INFO pathArray, [UINT32, _In_] uint numModeInfoArrayElements, [DISPLAYCONFIG_MODE_INFO, Ptr, _In_reads_opt_] DISPLAYCONFIG_MODE_INFO modeInfoArray, [UINT32, _In_] uint flags);
+        DISPLAYCONFIG_VIDEO_SIGNAL_INFO
     }
+
+
 
 
 
@@ -2132,6 +2263,6 @@ namespace IlyfairyLib.WinApi.User32
     [NAMEENUMPROCW]
     [return: BOOL]
     public delegate BOOL NameEnumProcW([LPWSTR] byte[] str, [LPARAM] IntPtr lParam);
-    
+
 
 }
