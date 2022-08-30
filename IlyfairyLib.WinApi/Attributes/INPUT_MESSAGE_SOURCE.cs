@@ -1,12 +1,10 @@
 ﻿using System;
-using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace IlyfairyLib.WinApi.Attributes
 {
-    public class DRAWSTATEPROCAttribute : WinApiBaseAttribute
+    public class INPUT_MESSAGE_SOURCEAttribute : WinApiBaseAttribute
     {
-
     }
 }

@@ -2009,14 +2009,18 @@ namespace IlyfairyLib.WinApi.User32
         [return: HWND]
         public static extern IntPtr GetActiveWindow();
 
+        [DllImport("user32.dll")]
+        [return: BOOL]
+        public static extern BOOL GetAutoRotationState([PAR_STATE] out ArState pState);
 
-
-
-
-
+        [DllImport("user32.dll")]
+        [return: BOOL]
+        public static extern BOOL GetCIMSSM([INPUT_MESSAGE_SOURCE, Ptr, _Out_] out InputMessageSource inputMessageSource);
 
 
     }
+
+
 
 
 
