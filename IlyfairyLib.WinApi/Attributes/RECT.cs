@@ -21,4 +21,8 @@ namespace IlyfairyLib.WinApi.Attributes
     {
 
     }
+    public class LPCRECTAttribute : WinApiBaseAttribute
+    {
+
+    }
 }

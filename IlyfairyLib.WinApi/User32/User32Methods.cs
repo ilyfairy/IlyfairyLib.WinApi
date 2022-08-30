@@ -599,11 +599,11 @@ namespace IlyfairyLib.WinApi.User32
         #region DdeInitialize
         [DllImport("user32.dll", CharSet = CharSet.Ansi)]
         [return: UINT]
-        public static extern uint DdeInitializeA([LPDWORD, _Inout_] ref uint pidInst, [PFNCALLBACK, _In_] DebCallback pfnCallback, [DWORD, _In_] uint afCmd, [DWORD, _Reserved_] uint ulRes);
+        public static extern uint DdeInitializeA([LPDWORD, _Inout_] ref uint pidInst, [PFNCALLBACK, _In_] PfnCallback pfnCallback, [DWORD, _In_] uint afCmd, [DWORD, _Reserved_] uint ulRes);
 
         [DllImport("user32.dll", CharSet = CharSet.Unicode)]
         [return: UINT]
-        public static extern uint DdeInitializeW([LPDWORD, _Inout_] ref uint pidInst, [PFNCALLBACK, _In_] DebCallback pfnCallback, [DWORD, _In_] uint afCmd, [DWORD, _Reserved_] uint ulRes);
+        public static extern uint DdeInitializeW([LPDWORD, _Inout_] ref uint pidInst, [PFNCALLBACK, _In_] PfnCallback pfnCallback, [DWORD, _In_] uint afCmd, [DWORD, _Reserved_] uint ulRes);
         #endregion
 
         [DllImport("user32.dll")]
@@ -1763,7 +1763,7 @@ namespace IlyfairyLib.WinApi.User32
         #endregion
 
         #region SetClassLongPtr
-        [DllImport("user32.dll",CharSet = CharSet.Ansi)]
+        [DllImport("user32.dll", CharSet = CharSet.Ansi)]
         [return: ULONG_PTR]
         public static extern UIntPtr SetClassLongPtrA([HWND, _In_] IntPtr hWnd, [_In_] int nIndex, [LONG_PTR, _In_] IntPtr dwNewLong);
 
@@ -1846,14 +1846,126 @@ namespace IlyfairyLib.WinApi.User32
         public static extern BOOL InsertMenuW([HMENU, _In_] IntPtr hMenu, [UINT, _In_] uint uPosition, [UINT, _In_] uint uFlags, [UINT_PTR, _In_] UIntPtr uIDNewItem, [LPCWSTR, _In_opt_] string lpNewItem);
         #endregion
 
+        [DllImport("user32.dll")]
+        [return: BOOL]
 
+        public static extern BOOL IsMenu([HMENU, _In_] IntPtr hMenu);
 
+        [DllImport("user32.dll")]
+        [return: BOOL]
+        public static extern BOOL IsWindow([HWND, _In_opt_] IntPtr hWnd);
 
+        [DllImport("user32.dll")]
+        [return: BOOL]
+        public static extern BOOL IsChild([HWND, _In_] IntPtr hWndParent, [HWND, _In_] IntPtr hWnd);
 
+        #region IsCharAlpha
+        [DllImport("user32.dll", CharSet = CharSet.Ansi)]
+        [return: BOOL]
+        public static extern BOOL IsCharAlphaA([CHAR, _In_] byte ch);
 
+        [DllImport("user32.dll", CharSet = CharSet.Unicode)]
+        [return: BOOL]
+        public static extern BOOL IsCharAlphaW([WCHAR, _In_] char ch);
+        #endregion
 
+        #region IsCharAlphaNumeric
+        [DllImport("user32.dll", CharSet = CharSet.Ansi)]
+        [return: BOOL]
+        public static extern BOOL IsCharAlphaNumericA([CHAR, _In_] byte ch);
 
+        [DllImport("user32.dll", CharSet = CharSet.Unicode)]
+        [return: BOOL]
+        public static extern BOOL IsCharAlphaNumericW([WCHAR, _In_] char ch);
+        #endregion
 
+        #region IsCharLower
+        [DllImport("user32.dll", CharSet = CharSet.Ansi)]
+        [return: BOOL]
+        public static extern BOOL IsCharLowerA([CHAR, _In_] byte ch);
+
+        [DllImport("user32.dll", CharSet = CharSet.Unicode)]
+        [return: BOOL]
+        public static extern BOOL IsCharLowerW([WCHAR, _In_] char ch);
+        #endregion
+
+        #region IsCharUpper
+        [DllImport("user32.dll", CharSet = CharSet.Ansi)]
+        [return: BOOL]
+        public static extern BOOL IsCharUpperA([CHAR, _In_] byte ch);
+
+        [DllImport("user32.dll", CharSet = CharSet.Unicode)]
+        [return: BOOL]
+        public static extern BOOL IsCharUpperW([WCHAR, _In_] char ch);
+        #endregion
+
+        [DllImport("user32.dll")]
+        [return: BOOL]
+        public static extern BOOL IsClipboardFormatAvailable([UINT, _In_] uint format);
+
+        #region IsDialogMessage
+        [DllImport("user32.dll", CharSet = CharSet.Ansi)]
+        [return: BOOL]
+        public static extern BOOL IsDialogMessage([HWND, _In_] IntPtr hDlg, [LPMSG, _In_] in MSG lpMsg);
+
+        [DllImport("user32.dll", CharSet = CharSet.Ansi)]
+        [return: BOOL]
+        public static extern BOOL IsDialogMessageA([HWND, _In_] IntPtr hDlg, [LPMSG, _In_] in MSG lpMsg);
+
+        [DllImport("user32.dll", CharSet = CharSet.Unicode)]
+        [return: BOOL]
+        public static extern BOOL IsDialogMessageW([HWND, _In_] IntPtr hDlg, [LPMSG, _In_] in MSG lpMsg);
+        #endregion
+
+        [DllImport("user32.dll")]
+        [return: UINT]
+        public static extern uint IsDlgButtonChecked([HWND, _In_] IntPtr hDlg, [_In_] int nIDButton);
+
+        [DllImport("user32.dll")]
+        [return: BOOL]
+        public static extern BOOL IsGUIThread([BOOL, _In_] BOOL bConvert);
+
+        [DllImport("user32.dll")]
+        [return: BOOL]
+        public static extern BOOL IsHungAppWindow([HWND, _In_] IntPtr hWnd);
+
+        [DllImport("user32.dll")]
+        [return: BOOL]
+        public static extern BOOL IsIconic([HWND, _In_] IntPtr hWnd);
+
+        [DllImport("user32.dll")]
+        [return: BOOL]
+        public static extern BOOL IsImmersiveProcess([HANDLE, _In_] IntPtr hProcess);
+
+        [DllImport("user32.dll")]
+        [return: BOOL]
+        public static extern BOOL InvertRect([HDC, _In_] IntPtr hDC, [RECT, Ptr, CONST, _In_] in RECT lprc);
+
+        [DllImport("user32.dll")]
+        [return: BOOL]
+        public static extern BOOL GetTouchInputInfo([HTOUCHINPUT, _In_] IntPtr hTouchInput, [UINT, _In_] uint cInputs, [PTOUCHINPUT, _Out_writes_] TouchInput[] pInputs, [_In_] int cbSize);
+
+        [DllImport("user32.dll")]
+        [return: BOOL]
+        public static extern BOOL EnumThreadWindows([DWORD, _In_] uint dwThreadId, [WNDENUMPROC, _In_] WndEnumProc lpfn, [LPARAM, _In_] IntPtr lParam);
+
+        #region EnumProps
+        [DllImport("user32.dll", CharSet = CharSet.Ansi)]
+        public static extern int EnumPropsA([HWND, _In_] IntPtr hWnd, [PROPENUMPROCA, _In_] PropEnumProcA lpEnumFunc);
+
+        [DllImport("user32.dll", CharSet = CharSet.Unicode)]
+        public static extern int EnumPropsW([HWND, _In_] IntPtr hWnd, [PROPENUMPROCW, _In_] PropEnumProcW lpEnumFunc);
+
+        [DllImport("user32.dll", CharSet = CharSet.Ansi)]
+        public static extern int EnumPropsExA([HWND, _In_] IntPtr hWnd, [PROPENUMPROCEXA, _In_] PropEnumProcExA lpEnumFunc, [LPARAM, _In_] IntPtr lParam);
+
+        [DllImport("user32.dll", CharSet = CharSet.Unicode)]
+        public static extern int EnumPropsExW([HWND, _In_] IntPtr hWnd, [PROPENUMPROCEXW, _In_] PropEnumProcExW lpEnumFunc, [LPARAM, _In_] IntPtr lParam);
+        #endregion
+
+        [DllImport("user32.dll")]
+        [return: BOOL]
+        public static extern BOOL EnumDisplayMonitors([HDC, _In_opt_] IntPtr hdc, [LPCRECT, _In_opt_] in RECT lprcClip, [MONITORENUMPROC, _In_] MonitorEnumProc lpfnEnum, [LPARAM, _In_] IntPtr dwData);
 
 
 
@@ -1870,25 +1982,60 @@ namespace IlyfairyLib.WinApi.User32
 
 
 
-
-
-
+    [DRAWSTATEPROC]
     [return: BOOL]
     public delegate BOOL DrawStateProc([HDC] IntPtr hdc, [LPARAM] IntPtr lData, [WPARAM] IntPtr wData, int cx, int cy);
+
+    [DLGPROC]
     [return: INT_PTR]
     public delegate IntPtr DLGProc([HWND] IntPtr hwnd, [UINT] uint arg2, [WPARAM] IntPtr arg3, [LPARAM] IntPtr arg4);
+
+    [PFNCALLBACK]
     [return: HDDEDATA]
-    public delegate IntPtr DebCallback([UINT] uint uType, [UINT] uint uFmt, [HCONV] IntPtr hconv, [HSZ] IntPtr hsz1, [HSZ] IntPtr hsz2, [HDDEDATA] IntPtr hdata, [ULONG_PTR] UIntPtr dwData1, [ULONG_PTR] UIntPtr dwData2);
+    public delegate IntPtr PfnCallback([UINT] uint uType, [UINT] uint uFmt, [HCONV] IntPtr hconv, [HSZ] IntPtr hsz1, [HSZ] IntPtr hsz2, [HDDEDATA] IntPtr hdata, [ULONG_PTR] UIntPtr dwData1, [ULONG_PTR] UIntPtr dwData2);
+
+    [WNDPROC]
     [return: LRESULT]
     public delegate IntPtr WndProc([HWND] IntPtr hWnd, [UINT] uint msg, [WPARAM] IntPtr wParam, [LPARAM] IntPtr lParam);
+
+    [WNDENUMPROC]
     [return: BOOL]
     public delegate BOOL WndEnumProc([HWND] IntPtr hWnd, [LPARAM] IntPtr lParam);
+
+    [HOOKPROC]
     [return: LRESULT]
     public delegate IntPtr HookProc(int code, [WPARAM] IntPtr wParam, [LPARAM] IntPtr lParam);
+
+    [TIMERPROC]
     [return: VOID]
     public delegate void TimerProc([HWND] IntPtr hwnd, [UINT] uint arg2, [UINT_PTR] UIntPtr arg3, [DWORD] uint arg4);
+
+    [DESKTOPENUMPROCA]
     [return: BOOL]
     public delegate BOOL DesktopEnumProcA([LPSTR] byte[] str, [LPARAM] IntPtr lParam);
+
+    [DESKTOPENUMPROCW]
     [return: BOOL]
     public delegate BOOL DesktopEnumProcW([LPWSTR] string str, [LPARAM] IntPtr lParam);
+
+    [PROPENUMPROCA]
+    [return: BOOL]
+    public delegate BOOL PropEnumProcA([HWND] IntPtr hWnd, [LPCSTR] byte[] str, [HANDLE] IntPtr handle);
+
+    [PROPENUMPROCW]
+    [return: BOOL]
+    public delegate BOOL PropEnumProcW([HWND] IntPtr hWnd, [LPCWSTR] string str, [HANDLE] IntPtr handle);
+
+    [PROPENUMPROCEXA]
+    [return: BOOL]
+    public delegate BOOL PropEnumProcExA([HWND] IntPtr hWnd, [LPCSTR] byte[] str, [HANDLE] IntPtr handle, [ULONG_PTR] UIntPtr arg4);
+
+    [PROPENUMPROCEXW]
+    [return: BOOL]
+    public delegate BOOL PropEnumProcExW([HWND] IntPtr hWnd, [LPCWSTR] string str, [HANDLE] IntPtr handle, [ULONG_PTR] UIntPtr arg4);
+
+    [MONITORENUMPROC]
+    [return: BOOL]
+    public delegate BOOL MonitorEnumProc([HMONITOR] IntPtr hMonitor, [HDC] IntPtr hdc, [LPRECT] IntPtr lpRect, [LPARAM] IntPtr lParam);
+    
 }
