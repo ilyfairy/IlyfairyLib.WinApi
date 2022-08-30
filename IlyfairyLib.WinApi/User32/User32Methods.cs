@@ -2017,6 +2017,48 @@ namespace IlyfairyLib.WinApi.User32
         [return: BOOL]
         public static extern BOOL GetCIMSSM([INPUT_MESSAGE_SOURCE, Ptr, _Out_] out InputMessageSource inputMessageSource);
 
+        #region DefFrameProc
+        [DllImport("user32.dll",CharSet = CharSet.Ansi)]
+        [return: LRESULT]
+        public static extern IntPtr DefFrameProcA([HWND, _In_] IntPtr hWnd, [HWND, _In_opt_] IntPtr hWndMDIClient, [UINT, _In_] uint uMsg, [WPARAM, _In_] IntPtr wParam, [LPARAM, _In_] IntPtr lParam);
+
+        [DllImport("user32.dll", CharSet = CharSet.Unicode)]
+        [return: LRESULT]
+        public static extern IntPtr DefFrameProcW([HWND, _In_] IntPtr hWnd, [HWND, _In_opt_] IntPtr hWndMDIClient, [UINT, _In_] uint uMsg, [WPARAM, _In_] IntPtr wParam, [LPARAM, _In_] IntPtr lParam);
+        #endregion
+
+        #region DefMDIChildProc
+        [DllImport("user32.dll", CharSet = CharSet.Ansi)]
+        [return: LRESULT]
+        public static extern IntPtr DefMDIChildProcA([HWND, _In_] IntPtr hWnd, [UINT, _In_] IntPtr uMsg, [UINT, _In_] uint uMsg, [WPARAM, _In_] IntPtr wParam, [LPARAM, _In_] IntPtr lParam);
+
+        [DllImport("user32.dll", CharSet = CharSet.Unicode)]
+        [return: LRESULT]
+        public static extern IntPtr DefMDIChildProcW([HWND, _In_] IntPtr hWnd, [UINT, _In_] IntPtr uMsg, [UINT, _In_] uint uMsg, [WPARAM, _In_] IntPtr wParam, [LPARAM, _In_] IntPtr lParam);
+        #endregion
+
+        #region DefDlgProc
+        [DllImport("user32.dll", CharSet = CharSet.Ansi)]
+        [return: LRESULT]
+        public static extern IntPtr DefDlgProcA([HWND, _In_] IntPtr hDlg, [UINT, _In_] uint Msg, [WPARAM, _In_] IntPtr wParam, [LPARAM, _In_] IntPtr lParam);
+
+        [DllImport("user32.dll", CharSet = CharSet.Unicode)]
+        [return: LRESULT]
+        public static extern IntPtr DefDlgProcW([HWND, _In_] IntPtr hDlg, [UINT, _In_] uint Msg, [WPARAM, _In_] IntPtr wParam, [LPARAM, _In_] IntPtr lParam);
+        #endregion
+
+        [DllImport("user32.dll")]
+        [return: LRESULT]
+        public static extern IntPtr DefRawInputProc([PRAWINPUT, Ptr, _In_reads_] RawInput[] paRawInput, [INT, _In_] int nInput, [UINT, _In_] uint cbSizeHeader);
+
+
+
+
+
+
+
+
+
 
     }
 
