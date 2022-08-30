@@ -1967,15 +1967,56 @@ namespace IlyfairyLib.WinApi.User32
         [return: BOOL]
         public static extern BOOL EnumDisplayMonitors([HDC, _In_opt_] IntPtr hdc, [LPCRECT, _In_opt_] in RECT lprcClip, [MONITORENUMPROC, _In_] MonitorEnumProc lpfnEnum, [LPARAM, _In_] IntPtr dwData);
 
+        #region EnumDisplaySettings
+        [DllImport("user32.dll",CharSet = CharSet.Ansi)]
+        [return: BOOL]
+        public static extern BOOL EnumDisplaySettingsA([LPCSTR, _In_opt_] byte[] lpszDeviceName, [DWORD, _In_] uint iModeNum, [DEVMODEA, Ptr, _Inout_] ref DEVMODEA lpDevMode);
+
+        [DllImport("user32.dll", CharSet = CharSet.Unicode)]
+        [return: BOOL]
+        public static extern BOOL EnumDisplaySettingsW([LPCWSTR, _In_opt_] string lpszDeviceName, [DWORD, _In_] uint iModeNum, [DEVMODEW, Ptr, _Inout_] ref DEVMODEW lpDevMode);
+
+        [DllImport("user32.dll", CharSet = CharSet.Ansi)]
+        [return: BOOL]
+        public static extern BOOL EnumDisplaySettingsExA([LPCSTR, _In_opt_] byte[] lpszDeviceName, [DWORD, _In_] uint iModeNum, [DEVMODEA, _Inout_] ref DEVMODEA lpDevMode, [DWORD, _In_] uint dwFlags);
+
+        [DllImport("user32.dll", CharSet = CharSet.Unicode)]
+        [return: BOOL]
+        public static extern BOOL EnumDisplaySettingsExW([LPCWSTR, _In_opt_] string lpszDeviceName, [DWORD, _In_] uint iModeNum, [DEVMODEW, _Inout_] ref DEVMODEW lpDevMode, [DWORD, _In_] uint dwFlags);
+        #endregion
+
+        #region EnumWindowStations
+        [DllImport("user32.dll",CharSet = CharSet.Ansi)]
+        [return: BOOL]
+        public static extern BOOL EnumWindowStationsA([WINSTAENUMPROCA, _In_] NameEnumProcA lpEnumFunc, [LPARAM, _In_] IntPtr lParam);
+
+        [DllImport("user32.dll", CharSet = CharSet.Unicode)]
+        [return: BOOL]
+        public static extern BOOL EnumWindowStationsW([WINSTAENUMPROCW, _In_] NameEnumProcW lpEnumFunc, [LPARAM, _In_] IntPtr lParam);
+        #endregion
+
+        [DllImport("user32.dll")]
+        public static extern int ExcludeUpdateRgn([HDC, _In_] IntPtr hDC, [HWND, _In_] IntPtr hWnd);
+
+        [DllImport("user32.dll")]
+        [return: BOOL]
+        public static extern BOOL FlashWindowEx([PFLASHWINFO, _In_] in FlashWInfo pfwi);
+
+        [DllImport("user32.dll")]
+        public static extern int FrameRect([HDC, _In_] IntPtr hDC, [RECT, Ptr, CONST, _In_] in RECT lprc, [HBRUSH, _In_] IntPtr hbr);
+
+        [DllImport("user32.dll")]
+        [return: HWND]
+        public static extern IntPtr GetActiveWindow();
+
+
+
+
+
+
 
 
     }
-
-
-
-
-
-
 
 
 
@@ -2037,5 +2078,14 @@ namespace IlyfairyLib.WinApi.User32
     [MONITORENUMPROC]
     [return: BOOL]
     public delegate BOOL MonitorEnumProc([HMONITOR] IntPtr hMonitor, [HDC] IntPtr hdc, [LPRECT] IntPtr lpRect, [LPARAM] IntPtr lParam);
+
+    [NAMEENUMPROCA]
+    [return: BOOL]
+    public delegate BOOL NameEnumProcA([LPSTR] byte[] str, [LPARAM] IntPtr lParam);
+
+    [NAMEENUMPROCW]
+    [return: BOOL]
+    public delegate BOOL NameEnumProcW([LPWSTR] byte[] str, [LPARAM] IntPtr lParam);
     
+
 }
