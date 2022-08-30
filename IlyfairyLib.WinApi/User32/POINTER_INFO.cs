@@ -4,7 +4,7 @@ using System.Runtime.InteropServices;
 namespace IlyfairyLib.WinApi.User32
 {
     [StructLayout(LayoutKind.Sequential)]
-    public struct POINTER_INFO
+    public struct PointerInfo
     {
         public PointerInputType pointerType;
         public uint pointerId;

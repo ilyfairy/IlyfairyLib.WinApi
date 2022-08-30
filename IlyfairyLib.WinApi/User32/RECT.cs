@@ -1,8 +1,10 @@
-﻿using System.Runtime.InteropServices;
+﻿using IlyfairyLib.WinApi.Attributes;
+using System.Runtime.InteropServices;
 
 namespace IlyfairyLib.WinApi.User32
 {
     [StructLayout(LayoutKind.Sequential)]
+    [RECT]
     public struct RECT
     {
         public const int Length = 16;

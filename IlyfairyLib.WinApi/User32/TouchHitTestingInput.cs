@@ -4,7 +4,8 @@ using System.Runtime.InteropServices;
 namespace IlyfairyLib.WinApi.User32
 {
     [StructLayout(LayoutKind.Sequential)]
-    public struct TouchHitTestingInput // TOUCH_HIT_TESTING_INPUT
+    [TOUCH_HIT_TESTING_INPUT]
+    public struct TouchHitTestingInput
     {
         [UINT32]
         public uint pointerId;

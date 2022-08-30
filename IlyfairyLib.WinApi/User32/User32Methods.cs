@@ -1053,7 +1053,7 @@ namespace IlyfairyLib.WinApi.User32
 
         [DllImport("user32.dll")]
         [return: BOOL]
-        public static extern BOOL GetPointerInfo([UINT32, _In_] uint pointerId, [POINTER_INFO, Ptr, _Out_writes_] out POINTER_INFO pointerInfo);
+        public static extern BOOL GetPointerInfo([UINT32, _In_] uint pointerId, [POINTER_INFO, Ptr, _Out_writes_] out PointerInfo pointerInfo);
 
         #region GetPropA
         [DllImport("user32.dll", CharSet = CharSet.Ansi)]
@@ -2188,7 +2188,74 @@ namespace IlyfairyLib.WinApi.User32
         [DllImport("user32.dll")]
         [return: LONG]
         public static extern int SetDisplayConfig([UINT32, _In_] uint numPathArrayElements, [DISPLAYCONFIG_PATH_INFO, Ptr, _In_reads_opt_] DISPLAYCONFIG_PATH_INFO pathArray, [UINT32, _In_] uint numModeInfoArrayElements, [DISPLAYCONFIG_MODE_INFO, Ptr, _In_reads_opt_] DISPLAYCONFIG_MODE_INFO modeInfoArray, [UINT32, _In_] uint flags);
-        DISPLAYCONFIG_VIDEO_SIGNAL_INFO
+
+        [DllImport("user32.dll")]
+        [return: BOOL]
+        public static extern BOOL SetDlgItemInt([HWND, _In_] IntPtr hDlg, [_In_] int nIDDlgItem, [UINT, _In_] uint uValue, [BOOL, _In_] BOOL bSigned);
+
+        [DllImport("user32.dll")]
+        [return: BOOL]
+        public static extern BOOL SetLayeredWindowAttributes([HWND, _In_] IntPtr hwnd, [COLORREF, _In_] uint crKey, [BYTE, _In_] byte bAlpha, [DWORD, _In_] uint dwFlags);
+
+        [DllImport("user32.dll")]
+        [return: HWND]
+        public static extern IntPtr GetOpenClipboardWindow();
+
+        [DllImport("user32.dll")]
+        [return: BOOL]
+        public static extern BOOL GetPhysicalCursorPos([LPPOINT, _Out_] out POINT lpPoint);
+
+        [DllImport("user32.dll")]
+        [return: BOOL]
+        public static extern BOOL GetPointerCursorId([UINT32, _In_] uint pointerId, [UINT32, Ptr, _Out_] out uint cursorId);
+
+        [DllImport("user32.dll")]
+        [return: BOOL]
+        public static extern BOOL GetPointerDevices([UINT32, Ptr, _Inout_] uint deviceCount, [POINTER_DEVICE_INFO, Ptr, _Out_writes_opt_] PointerDeviceInfo[] pointerDevices);
+
+        [DllImport("user32.dll")]
+        [return: BOOL]
+        public static extern BOOL GetPointerDeviceCursors([HANDLE, _In_] IntPtr device, [UINT32, Ptr, _Inout_] ref uint cursorCount, [POINTER_DEVICE_CURSOR_INFO, Ptr, _Out_writes_opt_] PointerDeviceCursorInfo[] deviceCursors);
+
+        [DllImport("user32.dll")]
+        [return: BOOL]
+        public static extern BOOL GetPointerDeviceProperties([HANDLE, _In_] IntPtr device, [UINT32, Ptr, _Inout_] ref uint propertyCount, [POINTER_DEVICE_PROPERTY, Ptr, _Out_writes_opt_] PointerDeviceProperty[] pointerProperties);
+
+        [DllImport("user32.dll")]
+        [return: BOOL]
+        public static extern BOOL GetPointerDeviceRects([HANDLE, _In_] IntPtr device, [RECT, Ptr, _Out_writes_] out RECT pointerDeviceRect, [RECT, Ptr, _Out_writes_] out RECT displayRect);
+
+        [DllImport("user32.dll")]
+        [return: BOOL]
+        public static extern BOOL GetPointerDevices([UINT32, Ptr, _Inout_] ref uint deviceCount, [POINTER_DEVICE_INFO, Ptr, _Out_writes_opt_] PointerDeviceInfo[] pointerDevices);
+
+        [DllImport("user32.dll")]
+        [return: BOOL]
+        public static extern BOOL GetPointerFrameInfo([UINT32, _In_] uint pointerId, [UINT32, Ptr, _Inout_] ref uint pointerCount, [POINTER_INFO, Ptr, _Out_writes_opt_] PointerInfo[] pointerInfo);
+
+        [DllImport("user32.dll")]
+        [return: BOOL]
+        public static extern BOOL GetPointerFrameInfoHistory([UINT32, _In_] uint pointerId, [UINT32, Ptr, _Inout_] ref uint entriesCount, [UINT32, Ptr, _Inout_] ref uint pointerCount, [POINTER_INFO, Ptr, _Out_writes_opt_] PointerInfo[] pointerInfo);
+
+        [DllImport("user32.dll")]
+        [return: BOOL]
+        public static extern BOOL GetPointerFramePenInfo([UINT32, _In_] uint pointerId, [UINT32, Ptr, _Inout_] ref uint pointerCount, [POINTER_PEN_INFO, Ptr, _Out_writes_opt_] POINTER_PEN_INFO[] penInfo);
+
+        [DllImport("user32.dll")]
+        [return: BOOL]
+        public static extern BOOL GetPointerFramePenInfoHistory([UINT32, _In_] uint pointerId, [UINT32, Ptr, _Inout_] ref uint entriesCount, [UINT32, Ptr, _Inout_] ref uint pointerCount, [POINTER_PEN_INFO, Ptr, _Out_writes_opt_] POINTER_PEN_INFO[] penInfo);
+
+        [DllImport("user32.dll")]
+        [return: BOOL]
+        public static extern BOOL GetPointerFrameTouchInfo([UINT32, _In_] uint pointerId, [UINT32, Ptr, _Inout_] ref uint pointerCount, [POINTER_TOUCH_INFO, Ptr, _Out_writes_opt_] PointerTouchInfo[] touchInfo);
+
+
+
+
+
+
+
+
     }
 
 
