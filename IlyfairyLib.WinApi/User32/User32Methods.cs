@@ -2427,28 +2427,150 @@ namespace IlyfairyLib.WinApi.User32
         [return: BOOL]
         public static extern BOOL RegisterHotKey([HWND, _In_opt_] IntPtr hWnd, [_In_] int id, [UINT, _In_] ModifierKeys fsModifiers, [UINT, _In_] VirtualKeys vk);
 
+        [DllImport("user32.dll")]
+        [return: BOOL]
+        public static extern BOOL RegisterPointerDeviceNotifications([HWND, _In_] IntPtr window, [BOOL, _In_] BOOL notifyRange);
 
+        [DllImport("user32.dll")]
+        [return: BOOL]
+        public static extern BOOL RedrawWindow([HWND, _In_opt_] IntPtr hWnd, [RECT, Ptr, CONST, _In_opt_] in RECT lprcUpdate, [HRGN, _In_opt_] IntPtr hrgnUpdate, [UINT, _In_] uint flags);
 
+        [DllImport("user32.dll")]
+        [return: HWND]
+        public static extern IntPtr RealChildWindowFromPoint([HWND, _In_] IntPtr hwndParent, [POINT, _In_] POINT ptParentClientCoords);
 
+        [DllImport("user32.dll")]
+        [return: LONG]
+        public static extern int QueryDisplayConfig([UINT32, _In_] uint flags, [UINT32, Ptr, _Inout_] ref uint numPathArrayElements, [DISPLAYCONFIG_PATH_INFO, Ptr, _Out_writes_to_] DISPLAYCONFIG_PATH_INFO[] pathArray, [UINT32, Ptr, _Inout_] ref uint numModeInfoArrayElements, [DISPLAYCONFIG_MODE_INFO, Ptr, _Out_writes_to_] DISPLAYCONFIG_MODE_INFO[] modeInfoArray, [DISPLAYCONFIG_TOPOLOGY_ID, Ptr] out DISPLAYCONFIG_TOPOLOGY_ID currentTopologyId);
 
+        [DllImport("user32.dll")] // NOTE: Inaccurate
+        [return: BOOL]
+        public static extern BOOL QuerySendMessage([MSG, Ptr] ref MSG pMsg);
 
+        [DllImport("user32.dll")] // NOTE: Inaccurate
+        [return: BOOL]
+        public static extern BOOL IsServerSideWindow([HWND] IntPtr hWnd);
 
+        [DllImport("user32.dll")] // NOTE: Inaccurate
+        [return: BOOL]
+        public static extern BOOL IsThreadDesktopComposited();
 
+        #region GetClassInfo
+        [DllImport("user32.dll", CharSet = CharSet.Ansi)]
+        [return: BOOL]
+        public static extern BOOL GetClassInfoA([HINSTANCE, _In_opt_] IntPtr hInstance, [LPCSTR, _In_] byte[] lpClassName, [LPWNDCLASSA, _Out_] out WNDCLASSA lpWndClass);
 
+        [DllImport("user32.dll", CharSet = CharSet.Unicode)]
+        [return: BOOL]
+        public static extern BOOL GetClassInfoW([HINSTANCE, _In_opt_] IntPtr hInstance, [LPCWSTR, _In_] string lpClassName, [LPWNDCLASSW, _Out_] out WNDCLASSW lpWndClass);
 
+        [DllImport("user32.dll", CharSet = CharSet.Ansi)]
+        [return: BOOL]
+        public static extern BOOL GetClassInfoExA([HINSTANCE, _In_opt_] IntPtr hInstance, [LPCSTR, _In_] byte[] lpszClass, [LPWNDCLASSEXA, _Out_] out WNDCLASSEXA lpwcx);
 
+        [DllImport("user32.dll", CharSet = CharSet.Unicode)]
+        [return: BOOL]
+        public static extern BOOL GetClassInfoExW([HINSTANCE, _In_opt_] IntPtr hInstance, [LPCWSTR, _In_] string lpszClass, [LPWNDCLASSEXW, _Out_] out WNDCLASSEXW lpwcx);
+        #endregion
 
+        #region GetClassLong
+        [DllImport("user32.dll", CharSet = CharSet.Ansi)]
+        [return: DWORD]
+        public static extern uint GetClassLongA([HWND, _In_] IntPtr hWnd, [_In_] int nIndex);
 
+        [DllImport("user32.dll", CharSet = CharSet.Unicode)]
+        [return: DWORD]
+        public static extern uint GetClassLongW([HWND, _In_] IntPtr hWnd, [_In_] int nIndex);
+        #endregion
 
+        #region GetClassLongPtr
+        [DllImport("user32.dll", CharSet = CharSet.Ansi)]
+        [return: ULONG_PTR]
+        public static extern uint GetClassLongPtrA([HWND, _In_] IntPtr hWnd, [_In_] int nIndex);
 
+        [DllImport("user32.dll", CharSet = CharSet.Unicode)]
+        [return: ULONG_PTR]
+        public static extern uint GetClassLongPtrW([HWND, _In_] IntPtr hWnd, [_In_] int nIndex);
+        #endregion
 
+        #region GetClassName
+        [DllImport("user32.dll", CharSet = CharSet.Ansi)]
+        public static extern int GetClassNameA([HWND, _In_] IntPtr hWnd, [LPSTR, _Out_writes_to_] byte[] lpClassName, [_In_] int nMaxCount);
+
+        [DllImport("user32.dll", CharSet = CharSet.Unicode)]
+        public static extern int GetClassNameW([HWND, _In_] IntPtr hWnd, [LPWSTR, _Out_writes_to_] StringBuilder lpClassName, [_In_] int nMaxCount);
+        #endregion
+
+        [DllImport("user32.dll")]
+        [return: WORD]
+        public static extern ushort GetClassWord([HWND, _In_] IntPtr hWnd, [_In_] int nIndex);
+
+        [DllImport("user32.dll")]
+        [return: BOOL]
+        public static extern BOOL GetClientRect([HWND, _In_] IntPtr hWnd, [LPRECT, _Out_] out RECT lpRect);
+
+        [DllImport("user32.dll")]
+        [return: BOOL]
+        public static extern BOOL GetClipCursor([LPRECT, _Out_] out RECT lpRect);
+
+        [DllImport("user32.dll")]
+        [return: HANDLE]
+        public static extern IntPtr GetClipboardData([UINT, _In_] uint uFormat);
+
+        #region GetClipboardFormatName
+        [DllImport("user32.dll", CharSet = CharSet.Ansi)]
+        public static extern int GetClipboardFormatNameA([UINT, _In_] uint format, [LPSTR, _Out_writes_] byte[] lpszFormatName, [_In_] int cchMaxCount);
+
+        [DllImport("user32.dll", CharSet = CharSet.Unicode)]
+        public static extern int GetClipboardFormatNameW([UINT, _In_] uint format, [LPWSTR, _Out_writes_] StringBuilder lpszFormatName, [_In_] int cchMaxCount);
+        #endregion
+
+        [DllImport("user32.dll")]
+        [return: HWND]
+        public static extern IntPtr GetClipboardOwner();
+
+        [DllImport("user32.dll")]
+        [return: HWND]
+        public static extern IntPtr GetClipboardViewer();
+
+        [DllImport("user32.dll")]
+        [return: DWORD]
+        public static extern uint GetClipboardSequenceNumber();
+
+        #region GetAltTabInfo
+        [DllImport("user32.dll", CharSet = CharSet.Ansi)]
+        [return: BOOL]
+        public static extern BOOL GetAltTabInfo([HWND, _In_opt_] IntPtr hwnd, [_In_] int iItem, [PALTTABINFO, _Inout_] ref ALTTABINFO pati, [LPSTR, _Out_writes_opt_] byte[] pszItemText, [UINT, _In_] uint cchItemText);
+
+        [DllImport("user32.dll", CharSet = CharSet.Ansi)]
+        [return: BOOL]
+        public static extern BOOL GetAltTabInfoA([HWND, _In_opt_] IntPtr hwnd, [_In_] int iItem, [PALTTABINFO, _Inout_] ref ALTTABINFO pati, [LPSTR, _Out_writes_opt_] byte[] pszItemText, [UINT, _In_] uint cchItemText);
+
+        [DllImport("user32.dll", CharSet = CharSet.Unicode)]
+        [return: BOOL]
+        public static extern BOOL GetAltTabInfoW([HWND, _In_opt_] IntPtr hwnd, [_In_] int iItem, [PALTTABINFO, _Inout_] ref ALTTABINFO pati, [LPWSTR, _Out_writes_opt_] StringBuilder pszItemText, [UINT, _In_] uint cchItemText);
+        #endregion
+
+        [DllImport("user32.dll")]
+        public static extern IntPtr GetAncestor([HWND, _In_] IntPtr hwnd, [UINT, _In_] uint gaFlags);
 
 
     }
 
-
-
-
+    [StructLayout(LayoutKind.Sequential)]
+    [ALTTABINFO]
+    public struct ALTTABINFO
+    {
+        [DWORD]public uint cbSize;
+        public int cItems;
+        public int cColumns;
+        public int cRows;
+        public int iColFocus;
+        public int iRowFocus;
+        public int cxItem;
+        public int cyItem;
+        [POINT]public POINT ptStart;
+    }
 
 
 

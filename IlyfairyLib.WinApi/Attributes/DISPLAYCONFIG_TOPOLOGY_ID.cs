@@ -4,7 +4,7 @@ using System.Text;
 
 namespace IlyfairyLib.WinApi.Attributes
 {
-    public class WNDCLASSEXWAttribute : WinApiBaseAttribute
+    public class DISPLAYCONFIG_TOPOLOGY_IDAttribute : WinApiBaseAttribute
     {
 
     }
