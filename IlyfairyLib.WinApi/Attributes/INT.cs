@@ -7,4 +7,7 @@ namespace IlyfairyLib.WinApi.Attributes
     public class INTAttribute : WinApiBaseAttribute
     {
     }
+    public class LPINTAttribute : WinApiBaseAttribute
+    {
+    }
 }

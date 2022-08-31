@@ -1,13 +1,16 @@
 ﻿using IlyfairyLib.WinApi.Attributes;
+using System;
 using System.Runtime.InteropServices;
 
 namespace IlyfairyLib.WinApi.User32
 {
     [StructLayout(LayoutKind.Sequential)]
-    [LASTINPUTINFO]
-    public struct LASTINPUTINFO
+    [RAWINPUTDEVICELIST]
+    public struct RAWINPUTDEVICELIST
     {
-        [UINT] public uint cbSize;
-        [DWORD] public uint dwTime;
+        [HANDLE]public IntPtr hDevice;
+        [DWORD]public uint dwType;
     }
+
+
 }

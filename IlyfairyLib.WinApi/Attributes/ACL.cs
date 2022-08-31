@@ -4,10 +4,10 @@ using System.Text;
 
 namespace IlyfairyLib.WinApi.Attributes
 {
-    public class DWORD_PTRAttribute : WinApiBaseAttribute
+    public class ACLAttribute : WinApiBaseAttribute
     {
     }
-    public class PDWORD_PTRAttribute : WinApiBaseAttribute
+    public class PACLAttribute : WinApiBaseAttribute
     {
     }
 }

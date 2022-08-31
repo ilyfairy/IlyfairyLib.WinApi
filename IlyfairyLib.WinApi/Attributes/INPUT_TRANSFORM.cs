@@ -4,10 +4,8 @@ using System.Text;
 
 namespace IlyfairyLib.WinApi.Attributes
 {
-    public class DWORDAttribute : WinApiBaseAttribute
+    public class INPUT_TRANSFORMAttribute : WinApiBaseAttribute
     {
-    }
-    public class LPDWORDAttribute : WinApiBaseAttribute
-    {
+
     }
 }

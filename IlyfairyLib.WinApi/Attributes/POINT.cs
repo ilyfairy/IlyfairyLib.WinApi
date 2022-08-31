@@ -6,10 +6,8 @@ namespace IlyfairyLib.WinApi.Attributes
 {
     public class POINTAttribute : WinApiBaseAttribute
     {
-
     }
     public class LPPOINTAttribute : WinApiBaseAttribute
     {
-
     }
 }

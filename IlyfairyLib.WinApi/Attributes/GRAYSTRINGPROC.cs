@@ -4,10 +4,8 @@ using System.Text;
 
 namespace IlyfairyLib.WinApi.Attributes
 {
-    public class DWORDAttribute : WinApiBaseAttribute
+    public class GRAYSTRINGPROCAttribute : WinApiBaseAttribute
     {
-    }
-    public class LPDWORDAttribute : WinApiBaseAttribute
-    {
+
     }
 }

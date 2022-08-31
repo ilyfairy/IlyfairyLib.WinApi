@@ -4,10 +4,7 @@ using System.Text;
 
 namespace IlyfairyLib.WinApi.Attributes
 {
-    public class DWORDAttribute : WinApiBaseAttribute
-    {
-    }
-    public class LPDWORDAttribute : WinApiBaseAttribute
+    public class POINTER_TYPE_INFOAttribute : WinApiBaseAttribute
     {
     }
 }

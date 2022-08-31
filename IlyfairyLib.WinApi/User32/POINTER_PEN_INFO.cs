@@ -5,7 +5,7 @@ namespace IlyfairyLib.WinApi.User32
 {
     [StructLayout(LayoutKind.Sequential)]
     [POINTER_PEN_INFO]
-    public struct POINTER_PEN_INFO
+    public struct PointerPenInfo
     {
         [POINTER_INFO]public PointerInfo pointerInfo;
         [PEN_FLAGS]public PenFlags penFlags;

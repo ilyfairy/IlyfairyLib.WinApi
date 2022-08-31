@@ -703,10 +703,10 @@ namespace IlyfairyLib.WinApi.User32
         [DllImport("user32.dll", CharSet = CharSet.Unicode)]
         public static extern DialogBoxCommandIDs MessageBoxW([HWND, _In_opt_] IntPtr hWnd, [LPCWSTR, _In_opt_] string lpText, [LPCWSTR, _In_opt_] string lpCaption, [UINT, _In_] MessageBoxFlags uType);
 
-        [DllImport("user32.dll",CharSet = CharSet.Ansi)]
+        [DllImport("user32.dll", CharSet = CharSet.Ansi)]
         public static extern DialogBoxCommandIDs MessageBoxExA([HWND, _In_opt_] IntPtr hWnd, [LPCSTR, _In_opt_] byte[] lpText, [LPCSTR, _In_opt_] byte[] lpCaption, [UINT, _In_] uint uType, [WORD, _In_] ushort wLanguageId);
-        
-        [DllImport("user32.dll",CharSet = CharSet.Unicode)]
+
+        [DllImport("user32.dll", CharSet = CharSet.Unicode)]
         public static extern DialogBoxCommandIDs MessageBoxExW([HWND, _In_opt_] IntPtr hWnd, [LPCWSTR, _In_opt_] string lpText, [LPCWSTR, _In_opt_] string lpCaption, [UINT, _In_] uint uType, [WORD, _In_] ushort wLanguageId);
         #endregion
 
@@ -2254,11 +2254,11 @@ namespace IlyfairyLib.WinApi.User32
 
         [DllImport("user32.dll")]
         [return: BOOL]
-        public static extern BOOL GetPointerFramePenInfo([UINT32, _In_] uint pointerId, [UINT32, Ptr, _Inout_] ref uint pointerCount, [POINTER_PEN_INFO, Ptr, _Out_writes_opt_] POINTER_PEN_INFO[] penInfo);
+        public static extern BOOL GetPointerFramePenInfo([UINT32, _In_] uint pointerId, [UINT32, Ptr, _Inout_] ref uint pointerCount, [POINTER_PEN_INFO, Ptr, _Out_writes_opt_] PointerPenInfo[] penInfo);
 
         [DllImport("user32.dll")]
         [return: BOOL]
-        public static extern BOOL GetPointerFramePenInfoHistory([UINT32, _In_] uint pointerId, [UINT32, Ptr, _Inout_] ref uint entriesCount, [UINT32, Ptr, _Inout_] ref uint pointerCount, [POINTER_PEN_INFO, Ptr, _Out_writes_opt_] POINTER_PEN_INFO[] penInfo);
+        public static extern BOOL GetPointerFramePenInfoHistory([UINT32, _In_] uint pointerId, [UINT32, Ptr, _Inout_] ref uint entriesCount, [UINT32, Ptr, _Inout_] ref uint pointerCount, [POINTER_PEN_INFO, Ptr, _Out_writes_opt_] PointerPenInfo[] penInfo);
 
         [DllImport("user32.dll")]
         [return: BOOL]
@@ -2607,11 +2607,11 @@ namespace IlyfairyLib.WinApi.User32
         public static extern BOOL ValidateRect([HWND, _In_opt_] IntPtr hWnd, [RECT, Ptr, CONST, _In_opt_] in RECT lpRect);
 
         #region ModifyMenu
-        [DllImport("user32.dll",CharSet = CharSet.Ansi)]
+        [DllImport("user32.dll", CharSet = CharSet.Ansi)]
         [return: BOOL]
         public static extern BOOL ModifyMenuA([HMENU, _In_] IntPtr hMnu, [UINT, _In_] uint uPosition, [UINT, _In_] uint uFlags, [UINT_PTR, _In_] UIntPtr uIDNewItem, [LPCSTR, _In_opt_] byte[] lpNewItem);
 
-        [DllImport("user32.dll",CharSet = CharSet.Unicode)]
+        [DllImport("user32.dll", CharSet = CharSet.Unicode)]
         [return: BOOL]
         public static extern BOOL ModifyMenuW([HMENU, _In_] IntPtr hMnu, [UINT, _In_] uint uPosition, [UINT, _In_] uint uFlags, [UINT_PTR, _In_] UIntPtr uIDNewItem, [LPCWSTR, _In_opt_] string lpNewItem);
         #endregion
@@ -2664,7 +2664,7 @@ namespace IlyfairyLib.WinApi.User32
         [DllImport("user32.dll", CharSet = CharSet.Ansi)]
         [return: BOOL]
         public static extern BOOL OemToCharBuffA([LPCSTR, _In_] byte[] lpszSrc, [LPSTR, _Out_writes_] byte[] lpszDst, [DWORD, _In_] uint cchDstLength);
-        
+
         [DllImport("user32.dll", CharSet = CharSet.Unicode)]
         [return: BOOL]
         public static extern BOOL OemToCharBuffW([LPCSTR, _In_] byte[] lpszSrc, [LPWSTR, _Out_writes_] StringBuilder lpszDst, [DWORD, _In_] uint cchDstLength);
@@ -2705,15 +2705,15 @@ namespace IlyfairyLib.WinApi.User32
         public static extern uint GetMenuState([HMENU, _In_] IntPtr hMenu, [UINT, _In_] uint uId, [UINT, _In_] uint uFlags);
 
         #region GetMenuString
-        [DllImport("user32.dll",CharSet = CharSet.Ansi)]
+        [DllImport("user32.dll", CharSet = CharSet.Ansi)]
         public static extern int GetMenuStringA([HMENU, _In_] IntPtr hMenu, [UINT, _In_] uint uIDItem, [LPSTR, _Out_writes_opt_] byte[] lpString, [_In_] int cchMax, [UINT, _In_] uint flags);
-        
+
         [DllImport("user32.dll", CharSet = CharSet.Unicode)]
         public static extern int GetMenuStringW([HMENU, _In_] IntPtr hMenu, [UINT, _In_] uint uIDItem, [LPWSTR, _Out_writes_opt_] StringBuilder lpString, [_In_] int cchMax, [UINT, _In_] uint flags);
         #endregion
 
         #region GetMonitorInfo
-        [DllImport("user32.dll",CharSet = CharSet.Ansi)]
+        [DllImport("user32.dll", CharSet = CharSet.Ansi)]
         [return: BOOL]
         public static extern BOOL GetMonitorInfoA([HMONITOR, _In_] IntPtr hMonitor, [LPMONITORINFO, _Inout_] ref MonitorInfo lpmi);
 
@@ -2778,7 +2778,7 @@ namespace IlyfairyLib.WinApi.User32
         public static extern void SwitchToThisWindow([HWND, _In_] IntPtr hwnd, [BOOL, _In_] BOOL fUnknown);
 
         #region SystemParametersInfo
-        [DllImport("user32.dll",CharSet = CharSet.Ansi)]
+        [DllImport("user32.dll", CharSet = CharSet.Ansi)]
         [return: BOOL]
         public static extern unsafe BOOL SystemParametersInfoA([UINT, _In_] uint uiAction, [UINT, _In_] uint uiParam, [PVOID, _Post_valid_, _Pre_maybenull_] void* pvParam, [UINT, _In_] uint fWinIni);
 
@@ -2792,10 +2792,10 @@ namespace IlyfairyLib.WinApi.User32
         public static extern unsafe BOOL SystemParametersInfoForDpi([UINT, _In_] uint uiAction, [UINT, _In_] uint uiParam, [PVOID, _Post_valid_, _Pre_maybenull_] void* pvParam, [UINT, _In_] uint fWinIni, [UINT, _In_] uint dpi);
 
         #region TranslateAccelerator
-        [DllImport("user32.dll",CharSet = CharSet.Ansi)]
+        [DllImport("user32.dll", CharSet = CharSet.Ansi)]
         public static extern int TranslateAccelerator([HWND, _In_] IntPtr hWnd, [HACCEL, _In_] IntPtr hAccTable, [LPMSG, _In_] in MSG lpMsg);
 
-        [DllImport("user32.dll",CharSet = CharSet.Ansi)]
+        [DllImport("user32.dll", CharSet = CharSet.Ansi)]
         public static extern int TranslateAcceleratorA([HWND, _In_] IntPtr hWnd, [HACCEL, _In_] IntPtr hAccTable, [LPMSG, _In_] in MSG lpMsg);
 
         [DllImport("user32.dll", CharSet = CharSet.Unicode)]
@@ -2825,11 +2825,11 @@ namespace IlyfairyLib.WinApi.User32
         public static extern BOOL UnregisterDeviceNotification([HDEVNOTIFY, _In_] IntPtr Handle);
 
         #region GetRawInputDeviceInfo
-        [DllImport("user32.dll",CharSet = CharSet.Ansi)]
+        [DllImport("user32.dll", CharSet = CharSet.Ansi)]
         [return: UINT]
         public static extern unsafe uint GetRawInputDeviceInfoA([HANDLE, _In_opt_] IntPtr hDevice, [UINT, _In_] uint uiCommand, [LPVOID, _Inout_updates_bytes_to_opt_] void* pData, [PUINT, _Inout_] ref uint pcbSize);
-    
-        [DllImport("user32.dll",CharSet = CharSet.Unicode)]
+
+        [DllImport("user32.dll", CharSet = CharSet.Unicode)]
         [return: UINT]
         public static extern unsafe uint GetRawInputDeviceInfoW([HANDLE, _In_opt_] IntPtr hDevice, [UINT, _In_] uint uiCommand, [LPVOID, _Inout_updates_bytes_to_opt_] void* pData, [PUINT, _Inout_] ref uint pcbSize);
         #endregion
@@ -2843,10 +2843,10 @@ namespace IlyfairyLib.WinApi.User32
         public static extern BOOL SetMenuItemBitmaps([HMENU, _In_] IntPtr hMenu, [UINT, _In_] uint uPosition, [UINT, _In_] uint uFlags, [HBITMAP, _In_opt_] IntPtr hBitmapUnchecked, [HBITMAP, _In_opt_] IntPtr hBitmapChecked);
 
         #region SetMenuItemInfo
-        [DllImport("user32.dll",CharSet = CharSet.Ansi)]
+        [DllImport("user32.dll", CharSet = CharSet.Ansi)]
         [return: BOOL]
         public static extern BOOL SetMenuItemInfoA([HMENU, _In_] IntPtr hmenu, [UINT, _In_] uint item, [BOOL, _In_] BOOL fByPositon, [LPCMENUITEMINFOA, _In_] in MenuItemInfoA lpmii);
-        
+
         [DllImport("user32.dll", CharSet = CharSet.Unicode)]
         [return: BOOL]
         public static extern BOOL SetMenuItemInfoW([HMENU, _In_] IntPtr hmenu, [UINT, _In_] uint item, [BOOL, _In_] BOOL fByPositon, [LPCMENUITEMINFOW, _In_] in MenuItemInfoW lpmii);
@@ -2857,8 +2857,8 @@ namespace IlyfairyLib.WinApi.User32
         public static extern BOOL SetPhysicalCursorPos([_In_] int X, [_In_] int Y);
 
         #region RegisterClipboardFormat
-        [DllImport("user32.dll",CharSet = CharSet.Ansi)]
-        [return:UINT]
+        [DllImport("user32.dll", CharSet = CharSet.Ansi)]
+        [return: UINT]
         public static extern uint RegisterClipboardFormatA([LPCSTR, _In_] byte[] lpszFormat);
 
         [DllImport("user32.dll", CharSet = CharSet.Unicode)]
@@ -3012,76 +3012,412 @@ namespace IlyfairyLib.WinApi.User32
         public static extern BOOL MessageBeep([UINT, _In_] MessageBoxFlags uType);
 
         #region MessageBoxIndirect
-        [DllImport("user32.dll",CharSet = CharSet.Ansi)]
-        public static extern int MessageBoxIndirectA([MSGBOXPARAMSA, Ptr, _In_, CONST]in MsgBoxParamsA lpmbp);
+        [DllImport("user32.dll", CharSet = CharSet.Ansi)]
+        public static extern int MessageBoxIndirectA([MSGBOXPARAMSA, Ptr, _In_, CONST] in MsgBoxParamsA lpmbp);
 
-        [DllImport("user32.dll",CharSet = CharSet.Unicode)]
-        public static extern int MessageBoxIndirectW([MSGBOXPARAMSW, Ptr, _In_, CONST]in MsgBoxParamsW lpmbp);
+        [DllImport("user32.dll", CharSet = CharSet.Unicode)]
+        public static extern int MessageBoxIndirectW([MSGBOXPARAMSW, Ptr, _In_, CONST] in MsgBoxParamsW lpmbp);
         #endregion
 
+        #region MessageBoxTimeout
+        [DllImport("user32.dll", CharSet = CharSet.Ansi)]
+        public static extern DialogBoxCommandIDs MessageBoxTimeoutA([HWND, IN] IntPtr hWnd, [LPCSTR, IN] byte[] lpText, [LPCSTR, IN] byte[] lpCaption, [UINT, IN] MessageBoxFlags uType, [WORD, IN] ushort wLanguageId, [DWORD, IN] uint dwTimeout);
 
+        [DllImport("user32.dll", CharSet = CharSet.Unicode)]
+        public static extern DialogBoxCommandIDs MessageBoxTimeoutW([HWND, IN] IntPtr hWnd, [LPCWSTR, IN] string lpText, [LPCWSTR, IN] string lpCaption, [UINT, IN] MessageBoxFlags uType, [WORD, IN] ushort wLanguageId, [DWORD, IN] uint dwTimeout);
+        #endregion
+
+        #region LoadAccelerators
+        [DllImport("user32.dll", CharSet = CharSet.Ansi)]
+        public static extern IntPtr LoadAcceleratorsA([HINSTANCE, _In_opt_] IntPtr hInstance, [LPCSTR, _In_] byte[] lpTableName);
+
+        [DllImport("user32.dll", CharSet = CharSet.Unicode)]
+        public static extern IntPtr LoadAcceleratorsW([HINSTANCE, _In_opt_] IntPtr hInstance, [LPCWSTR, _In_] string lpTableName);
+        #endregion
+
+        #region GrayString
+        [DllImport("user32.dll", CharSet = CharSet.Ansi)]
+        [return: BOOL]
+        public static extern BOOL GrayStringA([HDC, _In_] IntPtr hDC, [HBRUSH, _In_opt_] IntPtr hBrush, [GRAYSTRINGPROC, _In_opt_] GrayStringProc lpOutputFunc, [LPARAM, _In_] IntPtr lpData, [_In_] int nCount, [_In_] int X, [_In_] int Y, [_In_] int nWidth, [_In_] int nHeight);
+
+        [DllImport("user32.dll", CharSet = CharSet.Unicode)]
+        [return: BOOL]
+        public static extern BOOL GrayStringW([HDC, _In_] IntPtr hDC, [HBRUSH, _In_opt_] IntPtr hBrush, [GRAYSTRINGPROC, _In_opt_] GrayStringProc lpOutputFunc, [LPARAM, _In_] IntPtr lpData, [_In_] int nCount, [_In_] int X, [_In_] int Y, [_In_] int nWidth, [_In_] int nHeight);
+        #endregion
+
+        [DllImport("user32.dll")]
+        [return: BOOL]
+        public static extern BOOL HideCaret([HWND, _In_opt_] IntPtr hWnd);
+
+        [DllImport("user32.dll")]
+        [return: BOOL]
+        public static extern BOOL HiliteMenuItem([HWND, _In_] IntPtr hWnd, [HMENU, _In_] IntPtr hMenu, [UINT, _In_] uint uIDHiliteItem, [UINT, _In_] uint uHilite);
+
+        [DllImport("user32.dll")]
+        [return: BOOL]
+        public static extern BOOL ImpersonateDdeClientWindow([HWND] IntPtr hWndClient, [HWND] IntPtr hWndServer);
+
+        #region InSendMessage
+        [DllImport("user32.dll")]
+        [return: BOOL]
+        public static extern BOOL InSendMessage();
+
+        [DllImport("user32.dll")]
+        [return: BOOL]
+        public static extern BOOL InSendMessage([LPVOID, _Reserved_] IntPtr lpReserved);
+        #endregion
+
+        [DllImport("user32.dll")]
+        [return: BOOL]
+        public static extern BOOL InheritWindowMonitor([HWND, _In_] IntPtr hwnd, [HWND, _In_opt_] IntPtr hwndInherit);
+
+        [DllImport("user32.dll")]
+        [return: BOOL]
+        public static extern BOOL InitializeTouchInjection([UINT32, _In_] uint maxCount, [DWORD, _In_] uint dwMode);
+
+        [DllImport("user32.dll")]
+        [return: BOOL]
+        public static extern BOOL InjectSyntheticPointerInput([HSYNTHETICPOINTERDEVICE, _In_] IntPtr device, [POINTER_TYPE_INFO, Ptr, _In_reads_, CONST] PointerTypeInfo[] pointerInfo, [UINT32, _In_] uint count);
+
+        [DllImport("user32.dll")]
+        [return: BOOL]
+        public static extern BOOL InjectTouchInput([UINT32, _In_] uint count, [POINTER_TOUCH_INFO, Ptr, _In_reads_, CONST] PointerTouchInfo[] contacts);
+
+        #region InsertMenuItem
+        [DllImport("user32.dll")]
+        [return: BOOL]
+        public static extern BOOL InsertMenuItemA([HMENU, _In_] IntPtr hmenu, [UINT, _In_] uint item, [BOOL, _In_] BOOL fByPosition, [LPCMENUITEMINFOA, _In_] in MenuItemInfoA lpmi);
+
+        [DllImport("user32.dll")]
+        [return: BOOL]
+        public static extern BOOL InsertMenuItemW([HMENU, _In_] IntPtr hmenu, [UINT, _In_] uint item, [BOOL, _In_] BOOL fByPosition, [LPCMENUITEMINFOW, _In_] in MenuItemInfoW lpmi);
+        #endregion
+
+        [DllImport("user32.dll")]
+        public static extern int InternalGetWindowText([HWND, _In_] IntPtr hWnd, [LPWSTR, _Out_writes_to_] StringBuilder pString, [_In_] int cchMaxCount);
+
+        [DllImport("user32.dll")]
+        [return: BOOL]
+        public static extern BOOL IntersectRect([LPRECT, _Out_] out RECT lprcDst, [RECT, Ptr, _In_, CONST] in RECT lprcSrc1, [RECT, Ptr, _In_, CONST] in RECT lprcSrc2);
+
+        [DllImport("user32.dll")]
+        [return: BOOL]
+        public static extern BOOL InvalidateRect([HWND, _In_opt_] IntPtr hWnd, [RECT, Ptr, _In_opt_, CONST] in RECT lpRect, [BOOL, _In_] BOOL bErase);
+
+        [DllImport("user32.dll")]
+        [return: BOOL]
+        public static extern BOOL InvalidateRgn([HWND, _In_] IntPtr hWnd, [HRGN, _In_opt_] IntPtr hRgn, [BOOL, _In_] BOOL bErase);
+
+        [DllImport("user32.dll")]
+        [return: BOOL]
+        public static extern BOOL GetPointerInfoHistory([UINT32, _In_] uint pointerId, [UINT32, Ptr, _Inout_] ref uint entriesCount, [POINTER_INFO, Ptr, _Out_writes_opt_] PointerInfo[] pointerInfo);
+
+        [DllImport("user32.dll")]
+        [return: BOOL]
+        public static extern BOOL GetPointerInputTransform([UINT32, _In_] uint pointerId, [UINT32, _In_] uint historyCount, [INPUT_TRANSFORM, Ptr, _Out_writes_] InputTransform[] inputTransform);
+
+        [DllImport("user32.dll")]
+        [return: BOOL]
+        public static extern BOOL GetPointerPenInfo([UINT32, _In_] uint pointerId, [POINTER_PEN_INFO, Ptr, _Out_writes_] out PointerPenInfo penInfo);
+
+        [DllImport("user32.dll")]
+        [return: BOOL]
+        public static extern BOOL GetPointerPenInfoHistory([UINT32, _In_] uint pointerId, [UINT32, Ptr, _Inout_] ref uint entriesCount, [POINTER_PEN_INFO, Ptr, _Out_writes_opt_] PointerPenInfo[] penInfo);
+
+        [DllImport("user32.dll")]
+        [return: BOOL]
+        public static extern BOOL GetPointerTouchInfo([UINT32, _In_] uint pointerId, [POINTER_TOUCH_INFO, Ptr, _Out_writes_] out PointerTouchInfo touchInfo);
+
+        [DllImport("user32.dll")]
+        [return: BOOL]
+        public static extern BOOL GetPointerTouchInfoHistory([UINT32, _In_] uint pointerId, [UINT32, Ptr, _Inout_] ref uint entriesCount, [POINTER_TOUCH_INFO, Ptr, _Out_writes_opt_] PointerTouchInfo[] touchInfo);
+
+        [DllImport("user32.dll")]
+        public static extern int GetPriorityClipboardFormat([UINT, Ptr, _In_reads_] uint[] paFormatPriorityList, [_In_] int cFormats);
+
+        [DllImport("user32.dll")]
+        [return: BOOL]
+        public static extern BOOL GetProcessDefaultLayout([DWORD, Ptr, _Out_] out uint pdwDefaultLayout);
+
+        [DllImport("user32.dll")]
+        [return: HWINSTA]
+        public static extern IntPtr GetProcessWindowStation();
+
+        [DllImport("user32.dll")]
+        [return: UINT]
+        public static extern uint GetRawInputDeviceList([PRAWINPUTDEVICELIST, _Out_writes_opt_] RAWINPUTDEVICELIST[] pRawInputDeviceList, [PUINT, _Inout_] ref uint puiNumDevices, [UINT, _In_] uint cbSize);
+
+        [DllImport("user32.dll")]
+        [return: BOOL]
+        public static extern BOOL GetRawPointerDeviceData([UINT32, _In_] uint pointerId, [UINT32, _In_] uint historyCount, [UINT32, _In_] uint propertiesCount, [POINTER_DEVICE_PROPERTY, Ptr, _In_reads_] PointerDeviceProperty[] pProperties, [LONG, Ptr, _Out_writes_] int[] pValues);
+
+        [DllImport("user32.dll")]
+        [return: UINT]
+        public static extern uint GetRegisteredRawInputDevices([PRAWINPUTDEVICE, _Out_writes_opt_] RAWINPUTDEVICE[] pRawInputDevices, [PUINT, _Inout_] ref uint puiNumDevices, [UINT, _In_] uint cbSize);
+
+        [DllImport("user32.dll")]
+        [return: BOOL]
+        public static extern BOOL GetScrollBarInfo([HWND, _In_] IntPtr hwnd, [LONG, _In_] int idObject, [PSCROLLBARINFO, _Inout_] ref ScrollBarInfo psbi);
+
+        [DllImport("user32.dll")]
+        [return: BOOL]
+        public static extern BOOL GetScrollInfo([HWND, _In_] IntPtr hwnd, [_In_] int nBar, [LPSCROLLINFO, _Inout_] ref ScrollInfo lpsi);
+
+        [DllImport("user32.dll")]
+        public static extern int GetScrollPos([HWND, _In_] IntPtr hWnd, [_In_] int nBar);
+
+        [DllImport("user32.dll")]
+        [return: BOOL]
+        public static extern BOOL GetScrollRange([HWND, _In_] IntPtr hWnd, [_In_] int nBar, [LPINT, _Out_] out int lpMinPos, [LPINT, _Out_] out int lpMaxPos);
+
+        [DllImport("user32.dll")]
+        [return: UINT]
+        public static extern uint GetSystemDpiForProcess([HANDLE, _In_] IntPtr hProcess);
+
+        [DllImport("user32.dll")]
+        [return: HMENU]
+        public static extern IntPtr GetSystemMenu([HWND, _In_] IntPtr hWnd, [BOOL, _In_] BOOL bRevert);
+
+        [DllImport("user32.dll")]
+        public static extern int GetSystemMetrics([_In_] int nIndex);
+
+        [DllImport("user32.dll")]
+        public static extern int GetSystemMetricsForDpi([_In_] int nIndex, [UINT, _In_] uint dpi);
+
+        #region GetTabbedTextExtent
+        [DllImport("user32.dll", CharSet = CharSet.Ansi)]
+        [return: DWORD]
+        public static extern uint GetTabbedTextExtentA([HDC, _In_] IntPtr hdc, [LPCSTR, _In_reads_] byte[] lpString, [_In_] int chCount, [_In_] int nTabPositions, [INT, Ptr, CONST, _In_reads_opt_] int[] lpnTabStopPositions);
+
+        [DllImport("user32.dll", CharSet = CharSet.Unicode)]
+        [return: DWORD]
+        public static extern uint GetTabbedTextExtentW([HDC, _In_] IntPtr hdc, [LPCWSTR, _In_reads_] string lpString, [_In_] int chCount, [_In_] int nTabPositions, [INT, Ptr, CONST, _In_reads_opt_] int[] lpnTabStopPositions);
+        #endregion
+
+        [DllImport("user32.dll")]
+        [return: DPI_AWARENESS_CONTEXT]
+        public static extern IntPtr GetThreadDpiAwarenessContext();
+
+        [DllImport("user32.dll")]
+        [return: DPI_HOSTING_BEHAVIOR]
+        public static extern DpiHostingBehavior GetThreadDpiHostingBehavior();
+
+        [DllImport("user32.dll")]
+        [return: BOOL]
+        public static extern BOOL GetTitleBarInfo([HWND, _In_] IntPtr hwnd, [PTITLEBARINFO, _Inout_] ref TitleBarInfo pti);
+
+        [DllImport("user32.dll")]
+        [return: BOOL]
+        public static extern BOOL GetUpdateRect([HWND, _In_] IntPtr hWnd, [LPRECT, _Out_opt_] out RECT lpRect, [BOOL, _In_] BOOL bErase);
+
+        [DllImport("user32.dll")]
+        public static extern int GetUpdateRgn([HWND, _In_] IntPtr hWnd, [HRGN, _In_] IntPtr hRgn, [BOOL, _In_] BOOL bErase);
+
+        [DllImport("user32.dll")]
+        [return: BOOL]
+        public static extern BOOL GetUpdatedClipboardFormats([PUINT, _Out_writes_] int[] lpuiFormats, [UINT, _In_] uint cFormats, [PUINT, _Out_] out uint pcFormatsOut);
+
+        #region GetUserObjectInformation
+        [DllImport("user32.dll", CharSet = CharSet.Ansi)]
+        [return: BOOL]
+        public static extern BOOL GetUserObjectInformationA([HANDLE, _In_] IntPtr hObj, [_In_] int nIndex, [PVOID, _Out_writes_bytes_opt_] byte[] pvInfo, [DWORD, _In_] uint nLength, [LPDWORD, _Out_opt_] out uint lpnLengthNeeded);
+
+        [DllImport("user32.dll", CharSet = CharSet.Unicode)]
+        [return: BOOL]
+        public static extern BOOL GetUserObjectInformationW([HANDLE, _In_] IntPtr hObj, [_In_] int nIndex, [PVOID, _Out_writes_bytes_opt_] byte[] pvInfo, [DWORD, _In_] uint nLength, [LPDWORD, _Out_opt_] out uint lpnLengthNeeded);
+        #endregion
+
+        [DllImport("user32.dll")]
+        [return: BOOL]
+        public static unsafe extern BOOL GetUserObjectSecurity([HANDLE, _In_] IntPtr hObj, [PSECURITY_INFORMATION, _In_] void* pSIRequested, [PSECURITY_DESCRIPTOR, _Out_writes_bytes_opt_] SECURITY_DESCRIPTOR[] pSID, [DWORD, _In_] uint nLength, [LPDWORD, _Out_] out uint lpnLengthNeeded);
+
+        [DllImport("user32.dll")]
+        [return: DWORD]
+        public static extern uint GetWindowContextHelpId([HWND, _In_] IntPtr hWnd);
+
+        [DllImport("user32.dll")]
+        [return: DPI_AWARENESS_CONTEXT]
+        public static extern IntPtr GetWindowDpiAwarenessContext([HWND, _In_] IntPtr hwnd);
+
+        [DllImport("user32.dll")]
+        public static extern IntPtr GetWindowDpiHostingBehavior([HWND, _In_] IntPtr hwnd);
+
+        #region GetWindowLong
+        [DllImport("user32.dll", CharSet = CharSet.Ansi)]
+        [return: LONG]
+        public static extern int GetWindowLongA([HWND, _In_] IntPtr hWnd, [_In_] int nIndex);
+
+        [DllImport("user32.dll", CharSet = CharSet.Unicode)]
+        [return: LONG]
+        public static extern int GetWindowLongW([HWND, _In_] IntPtr hWnd, [_In_] int nIndex);
+        #endregion
+
+        #region GetWindowLongPtr
+        [DllImport("user32.dll", CharSet = CharSet.Ansi)]
+        [return: LONG_PTR]
+        public static extern IntPtr GetWindowLongPtrA([HWND, _In_] IntPtr hWnd, [_In_] int nIndex);
+
+        [DllImport("user32.dll", CharSet = CharSet.Unicode)]
+        [return: LONG_PTR]
+        public static extern IntPtr GetWindowLongPtrW([HWND, _In_] IntPtr hWnd, [_In_] int nIndex);
+        #endregion
+
+        #region GetWindowModuleFileName
+        [DllImport("user32.dll", CharSet = CharSet.Ansi)]
+        [return: UINT]
+        public static extern uint GetWindowModuleFileName([HWND, _In_] IntPtr hwnd, [LPSTR, _Out_writes_to_] byte[] pszFileName, [UINT, _In_] uint cchFileNameMax);
+
+        [DllImport("user32.dll", CharSet = CharSet.Ansi)]
+        [return: UINT]
+        public static extern uint GetWindowModuleFileNameA([HWND, _In_] IntPtr hwnd, [LPSTR, _Out_writes_to_] byte[] pszFileName, [UINT, _In_] uint cchFileNameMax);
+
+        [DllImport("user32.dll", CharSet = CharSet.Ansi)]
+        [return: UINT]
+        public static extern uint GetWindowModuleFileNameW([HWND, _In_] IntPtr hwnd, [LPSTR, _Out_writes_to_] StringBuilder pszFileName, [UINT, _In_] uint cchFileNameMax);
+        #endregion
+
+        [DllImport("user32.dll")]
+        [return: BOOL]
+        public static extern BOOL GetWindowPlacement([HWND, _In_] IntPtr hWnd, [WINDOWPLACEMENT, Ptr, _Inout_] ref WindowPlacement lpwndpl);
+
+        [DllImport("user32.dll")]
+        [return: BOOL]
+        public static extern BOOL GetWindowRect([HWND, _In_] IntPtr hWnd, [LPRECT, _Out_] out RECT lpRect);
+
+        [DllImport("user32.dll")]
+        public static extern int GetWindowRgn([HWND, _In_] IntPtr hWnd, [HRGN, _In_] IntPtr hRgn);
+
+        [DllImport("user32.dll")]
+        public static extern int GetWindowRgnBox([HWND, _In_] IntPtr hWnd, [LPRECT, _Out_] out RECT lprc);
+
+        #region SendDlgItemMessage
+        [DllImport("user32.dll", CharSet = CharSet.Ansi)]
+        [return: LRESULT]
+        public static extern IntPtr SendDlgItemMessageA([HWND, _In_] IntPtr hDlg, [_In_] int nIDDlgItem, [UINT, _In_] uint Msg, [WPARAM, _In_] IntPtr wParam, [LPARAM, _In_] IntPtr lParam);
+
+        [DllImport("user32.dll", CharSet = CharSet.Unicode)]
+        [return: LRESULT]
+        public static extern IntPtr SendDlgItemMessageW([HWND, _In_] IntPtr hDlg, [_In_] int nIDDlgItem, [UINT, _In_] uint Msg, [WPARAM, _In_] IntPtr wParam, [LPARAM, _In_] IntPtr lParam);
+        #endregion
+
+        #region SendMessageCallback
+        [DllImport("user32.dll", CharSet = CharSet.Ansi)]
+        [return: BOOL]
+        public static extern BOOL SendMessageCallbackA([HWND, _In_] IntPtr hWnd, [UINT, _In_] uint Msg, [WPARAM, _In_] IntPtr wParam, [LPARAM, _In_] IntPtr lParam, [SENDASYNCPROC, _In_] SendAsyncProc lpResultCallBack, [ULONG_PTR, _In_] UIntPtr dwData);
+
+        [DllImport("user32.dll", CharSet = CharSet.Unicode)]
+        [return: BOOL]
+        public static extern BOOL SendMessageCallbackW([HWND, _In_] IntPtr hWnd, [UINT, _In_] uint Msg, [WPARAM, _In_] IntPtr wParam, [LPARAM, _In_] IntPtr lParam, [SENDASYNCPROC, _In_] SendAsyncProc lpResultCallBack, [ULONG_PTR, _In_] UIntPtr dwData);
+        #endregion
+
+        #region SendMessageTimeout
+        [DllImport("user32.dll", CharSet = CharSet.Ansi)]
+        public static extern IntPtr SendMessageTimeoutA([HWND, _In_] IntPtr hWnd, [UINT, _In_] uint Msg, [WPARAM, _In_] IntPtr wParam, [LPARAM, _In_] IntPtr lParam, [UINT, _In_] uint fuFlags, [UINT, _In_] uint uTimeout, [PDWORD_PTR, _Out_opt_] out IntPtr lpdwResult);
+
+        [DllImport("user32.dll", CharSet = CharSet.Unicode)]
+        public static extern IntPtr SendMessageTimeoutW([HWND, _In_] IntPtr hWnd, [UINT, _In_] uint Msg, [WPARAM, _In_] IntPtr wParam, [LPARAM, _In_] IntPtr lParam, [UINT, _In_] uint fuFlags, [UINT, _In_] uint uTimeout, [PDWORD_PTR, _Out_opt_] out IntPtr lpdwResult);
+        #endregion
+
+        #region SendNotifyMessage
+        [DllImport("user32.dll", CharSet = CharSet.Ansi)]
+        [return: BOOL]
+        public static extern BOOL SendNotifyMessageA([HWND, _In_] IntPtr hWnd, [UINT, _In_] uint Msg, [WPARAM, _In_] IntPtr wParam, [LPARAM, _In_] IntPtr lParam);
+
+        [DllImport("user32.dll", CharSet = CharSet.Unicode)]
+        [return: BOOL]
+        public static extern BOOL SendNotifyMessageW([HWND, _In_] IntPtr hWnd, [UINT, _In_] uint Msg, [WPARAM, _In_] IntPtr wParam, [LPARAM, _In_] IntPtr lParam);
+        #endregion
+
+        [DllImport("user32.dll")]
+        [return: BOOL]
+        public static extern BOOL SetProcessDPIAware();
+
+        [DllImport("user32.dll")]
+        [return: BOOL]
+        public static extern BOOL SetProcessDefaultLayout([DWORD, _In_] uint dwDefaultLayout);
+
+        [DllImport("user32.dll")]
+        [return: BOOL]
+        public static extern BOOL SetProcessDpiAwarenessContext([DPI_AWARENESS_CONTEXT, _In_] IntPtr value);
+
+        [DllImport("user32.dll")]
+        [return: BOOL]
+        public static extern BOOL SetProcessRestrictionExemption([BOOL, _In_] BOOL fEnableExemption);
+
+        [DllImport("user32.dll")]
+        [return: BOOL]
+        public static extern BOOL SetProcessWindowStation([HWINSTA, _In_] IntPtr hWinSta);
+
+        [DllImport("user32.dll")]
+        public static extern BOOL SetProgmanWindow([HWND] IntPtr hwnd);
+
+        #region SetShellWindow
+        [DllImport("user32.dll")]
+        public static extern BOOL SetShellWindow([HWND] IntPtr hwnd);
+
+        [DllImport("user32.dll")]
+        public static extern BOOL SetShellWindowEx([HWND] IntPtr hwnd, [HWND] IntPtr hwnd2);
+        #endregion
+
+        [DllImport("user32.dll")]
+        public static extern int SetScrollInfo([HWND, _In_] IntPtr hwnd, [_In_] int nBar, [LPCSCROLLINFO, _In_] in ScrollInfo lpsi, [BOOL, _In_] BOOL redraw);
+
+        [DllImport("user32.dll")]
+        public static extern int SetScrollPos([HWND, _In_] IntPtr hWnd, [_In_] int nBar, [_In_] int nPos, [BOOL, _In_] BOOL bRedraw);
+
+        [DllImport("user32.dll")]
+        [return: BOOL]
+        public static extern BOOL SetScrollRange([HWND, _In_] IntPtr hWnd, [_In_] int nBar, [_In_] int nMinPos, [_In_] int nMaxPos, [BOOL, _In_] BOOL bRedraw);
+
+        [DllImport("user32.dll")]
+        [return: DPI_HOSTING_BEHAVIOR]
+        public static extern DpiHostingBehavior SetThreadDpiHostingBehavior([DPI_HOSTING_BEHAVIOR, _In_] DpiHostingBehavior value);
+
+        #region SetUserObjectInformation
+        [DllImport("user32.dll", CharSet = CharSet.Ansi)]
+        [return: BOOL]
+        public static extern BOOL SetUserObjectInformationA([HANDLE, _In_] IntPtr hObj, [_In_] int nIndex, [PVOID, _In_reads_bytes_] byte[] pvInfo, [DWORD, _In_] uint nLength);
+
+        [DllImport("user32.dll", CharSet = CharSet.Unicode)]
+        [return: BOOL]
+        public static extern BOOL SetUserObjectInformationW([HANDLE, _In_] IntPtr hObj, [_In_] int nIndex, [PVOID, _In_reads_bytes_] byte[] pvInfo, [DWORD, _In_] uint nLength);
+        #endregion
+
+        [DllImport("user32.dll")]
+        [return: BOOL]
+        public static extern unsafe BOOL SetUserObjectSecurity([HANDLE, _In_] IntPtr hObj, [PSECURITY_INFORMATION, _In_] void* pSIRequested, [PSECURITY_DESCRIPTOR, _In_] SECURITY_DESCRIPTOR* pSID);
+
+        [DllImport("user32.dll")]
+        public static extern IntPtr SetWinEventHook([DWORD, _In_] uint eventMin, [DWORD, _In_] uint eventMax, [HMODULE, _In_opt_] IntPtr hmodWinEventProc, [WINEVENTPROC, _In_] WinEventProc pfnWinEventProc, [DWORD, _In_] uint idProcess, [DWORD, _In_] uint idThread, [DWORD, _In_] uint dwFlags);
+
+        [DllImport("user32.dll")]
+        [return: BOOL]
+        public static extern BOOL SetWindowContextHelpId([HWND, _In_] IntPtr hWnd, [DWORD, _In_] uint arg2);
+
+        #region UnregisterPointerInputTarget
+        [DllImport("user32.dll")]
+        [return: BOOL]
+        public static extern BOOL UnregisterPointerInputTarget([HWND, _In_] IntPtr hwnd, [POINTER_INPUT_TYPE, _In_] in PointerInputType pointerType);
+
+        [DllImport("user32.dll")]
+        [return: BOOL]
+        public static extern BOOL UnregisterPointerInputTargetEx([HWND, _In_] IntPtr hwnd, [POINTER_INPUT_TYPE, _In_] in PointerInputType pointerType);
+        #endregion
+
+        [DllImport("user32.dll")]
+        [return: BOOL]
+        public static extern BOOL UnregisterSuspendResumeNotification([HPOWERNOTIFY, IN] IntPtr Handle);
+
+        [DllImport("user32.dll")]
+        [return: BOOL]
+        public static extern BOOL UpdateLayeredWindowIndirect([HWND, _In_] IntPtr hWnd, [UPDATELAYEREDWINDOWINFO, Ptr, CONST, _In_] in UPDATELAYEREDWINDOWINFO pULWInfo);
+
+        [DllImport("user32.dll")]
+        [return: BOOL]
+        public static extern BOOL UserHandleGrantAccess([HANDLE, _In_] IntPtr hUserHandle, [HANDLE, _In_] IntPtr hJob, [BOOL, _In_] BOOL bGrant);
 
 
     }
-
-
-
-
-    [StructLayout(LayoutKind.Sequential)]
-    [MSGBOXPARAMSA]
-    public unsafe struct MsgBoxParamsA
-    {
-        [UINT] public uint cbSize;
-        [HWND] public IntPtr hwndOwner;
-        [HINSTANCE] public IntPtr hInstance;
-        [LPCSTR] public byte[] lpszText;
-        [LPCSTR] public byte[] lpszCaption;
-        [DWORD] public uint dwStyle;
-        [LPCSTR] public byte* lpszIcon;
-        [DWORD_PTR] public IntPtr dwContextHelpId;
-        [MSGBOXCALLBACK] public MsgBoxCallback lpfnMsgBoxCallback;
-        [DWORD] public uint dwLanguageId;
-    }
-
-    [StructLayout(LayoutKind.Sequential)]
-    [MSGBOXPARAMSW]
-    public unsafe struct MsgBoxParamsW
-    {
-        [UINT] public uint cbSize;
-        [HWND] public IntPtr hwndOwner;
-        [HINSTANCE] public IntPtr hInstance;
-        [LPCWSTR] public string lpszText;
-        [LPCWSTR] public string lpszCaption;
-        [DWORD] public uint dwStyle;
-        [LPCWSTR] public char* lpszIcon;
-        [DWORD_PTR] public IntPtr dwContextHelpId;
-        [MSGBOXCALLBACK] public MsgBoxCallback lpfnMsgBoxCallback;
-        [DWORD] public uint dwLanguageId;
-    }
-
-
-
-
-
-
-
-    [StructLayout(LayoutKind.Sequential)]
-    [MENUBARINFO]
-    public struct MENUBARINFO
-    {
-        [DWORD] public uint cbSize;
-        [RECT] public RECT rcBar;
-        [HMENU] public IntPtr hMenu;
-        [HWND] public IntPtr hwndMenu;
-        [BOOL] public unsafe fixed byte fBarFocused[1]; // 1
-        [BOOL] public unsafe fixed byte fFocused[1]; // 1
-        [BOOL] public unsafe fixed byte fUnused[30]; // 30
-    }
-
-
-
-
-
 
 
 
@@ -3151,10 +3487,22 @@ namespace IlyfairyLib.WinApi.User32
     [NAMEENUMPROCW]
     [return: BOOL]
     public delegate BOOL NameEnumProcW([LPWSTR] byte[] str, [LPARAM] IntPtr lParam);
-    
+
     [MSGBOXCALLBACK]
     [return: VOID]
     public delegate BOOL MsgBoxCallback([LPHELPINFO] ref HELPINFO lpHelpInfo);
-    
+
+    [GRAYSTRINGPROC]
+    [return: VOID]
+    public delegate BOOL GrayStringProc([HDC] IntPtr hdc, [LPARAM] IntPtr lParam, int arg3);
+
+    [SENDASYNCPROC]
+    [return: VOID]
+    public delegate void SendAsyncProc([HWND] IntPtr hwnd, [UINT] uint arg2, [ULONG_PTR] UIntPtr arg3, [LRESULT] IntPtr arg4);
+
+    [WINEVENTPROC]
+    [return: VOID]
+    public delegate void WinEventProc([HWINEVENTHOOK] IntPtr hWinEventHook, [DWORD] uint @event, [HWND] IntPtr hwnd, [LONG] int idObject, [LONG] int idChild, [DWORD] uint idEventThread, [DWORD] uint dwmsEventTime);
+
 
 }
