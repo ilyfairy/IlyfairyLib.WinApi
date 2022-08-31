@@ -4,7 +4,7 @@ using System.Text;
 
 namespace IlyfairyLib.WinApi.Attributes
 {
-    public class ATOMAttribute : WinApiBaseAttribute
+    public class _Out_writes_bytes_Attribute : WinApiBaseAttribute
     {
     }
 }

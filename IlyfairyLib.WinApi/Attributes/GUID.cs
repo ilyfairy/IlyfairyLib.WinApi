@@ -4,7 +4,10 @@ using System.Text;
 
 namespace IlyfairyLib.WinApi.Attributes
 {
-    public class DEVMODEWAttribute : WinApiBaseAttribute
+    public class GUIDAttribute : WinApiBaseAttribute
+    {
+    }
+    public class LPCGUIDAttribute : WinApiBaseAttribute
     {
     }
 }

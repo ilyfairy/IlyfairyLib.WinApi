@@ -4,7 +4,8 @@ using System.Text;
 
 namespace IlyfairyLib.WinApi.Attributes
 {
-    public class ATOMAttribute : WinApiBaseAttribute
+    public class POINTSAttribute : WinApiBaseAttribute
     {
+
     }
 }
