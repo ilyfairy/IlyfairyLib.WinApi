@@ -1,9 +1,11 @@
-﻿using System;
+﻿using IlyfairyLib.WinApi.Attributes;
+using System;
 using System.Runtime.InteropServices;
 
 namespace IlyfairyLib.WinApi.User32
 {
     [StructLayout(LayoutKind.Explicit, CharSet = CharSet.Unicode, Size = DEVMODEW.Length)]
+    [DEVMODEW]
     public struct DEVMODEW
     {
         public const int Length = 220;

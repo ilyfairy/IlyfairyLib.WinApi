@@ -1,4 +1,5 @@
-﻿using System;
+﻿using IlyfairyLib.WinApi.Attributes;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,6 +9,7 @@ using System.Text;
 namespace IlyfairyLib.WinApi.User32
 {
     [StructLayout(LayoutKind.Explicit,CharSet = CharSet.Ansi, Size = DEVMODEA.Length)]
+    [DEVMODEA]
     public struct DEVMODEA
     {
         public const int Length = 156;
