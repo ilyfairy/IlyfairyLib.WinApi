@@ -5,9 +5,8 @@
 		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
 		<Title>WinApi</Title>
 		<Authors>ilyfairy</Authors>
-		<Description>P/Invoke</Description>
+		<Description>WinApi</Description>
 		<PackageProjectUrl>https://github.com/ilyfairy/IlyfairyLib.WinApi</PackageProjectUrl>
-		<PackageReadmeFile>Invoke</PackageReadmeFile>
 		<RepositoryUrl>https://github.com/ilyfairy/IlyfairyLib.WinApi</RepositoryUrl>
 		<RepositoryType>git</RepositoryType>
 		<PackageTags>P/Invoke,WinApi</PackageTags>
@@ -16,10 +15,6 @@
 
 	<ItemGroup>
 	  <None Include="..\.editorconfig" Link=".editorconfig" />
-	  <None Include="P\Invoke">
-	    <Pack>True</Pack>
-	    <PackagePath>\</PackagePath>
-	  </None>
 	</ItemGroup>
 
 	<ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
