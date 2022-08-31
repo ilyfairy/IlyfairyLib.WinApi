@@ -3,7 +3,7 @@ using System.Runtime.InteropServices;
 
 namespace IlyfairyLib.WinApi.User32
 {
-    [StructLayout(LayoutKind.Sequential)]
+    [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Ansi)]
     [DISPLAY_DEVICEA]
     public struct DisplayDeviceA
     {
