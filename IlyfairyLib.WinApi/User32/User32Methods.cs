@@ -1237,8 +1237,11 @@ namespace IlyfairyLib.WinApi.User32
         public static extern BOOL EndMenu();
         #endregion
 
+        #region ReleaseDC
         [DllImport("user32.dll")]
         public static extern int ReleaseDC([HWND, _In_opt_] IntPtr hWnd, [HDC, _In_] IntPtr hDC);
+
+        #endregion
 
         #region EndPaint
         [DllImport("user32.dll")]
