@@ -7,15 +7,16 @@ A library collection of all API method signatures on the Windows operating syste
 
 Win32 APIs for all Windows versions are welcome. Special Windows Store targeted assemblies omit p/invoke signatures to banned APIs so your Store apps can depend on these libraries without getting rejected by the Store certification process.  
 
-Now all user32.dll exposed api is done
-
 ## Usage
-Go to [Nuget](https://www.nuget.org/packages/IlyfairyLib.WinApi) or enter the following command:
+Go to [Nuget](https://www.nuget.org/packages/IlyfairyLib.WinApi) or enter the following command:  
 ```powershell
 Install-Package IlyfairyLib.WinApi
 ```
 
 ## Distribution
+
+Now all user32.dll exposed api is done  
+
 
 Library      | All apis     | Done
 -------------|------------------|-------------
