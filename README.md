@@ -18,5 +18,5 @@ Install-Package IlyfairyLib.WinApi
 ## Distribution
 
 Library      | All apis     | Done
--------------|------------------|
-[user32.dll](./dll/user32.md)|1006|758|
+-------------|------------------|-------------
+[user32.dll](./dll/user32.md)|1006|758
