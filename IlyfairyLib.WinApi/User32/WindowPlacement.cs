@@ -3,8 +3,8 @@ using System.Runtime.InteropServices;
 
 namespace IlyfairyLib.WinApi.User32
 {
-    [WINDOWPLACEMENT]
     [StructLayout(LayoutKind.Sequential)]
+    [WINDOWPLACEMENT]
     public struct WindowPlacement
     {
         [UINT] public uint length;

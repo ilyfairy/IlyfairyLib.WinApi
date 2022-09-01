@@ -6,6 +6,11 @@ namespace IlyfairyLib.WinApi.Attributes
 {
     public class BOOLAttribute : WinApiBaseAttribute
     {
-
+    }
+    public class PBOOLAttribute : WinApiBaseAttribute
+    {
+    }
+    public class LPBOOLAttribute : WinApiBaseAttribute
+    {
     }
 }

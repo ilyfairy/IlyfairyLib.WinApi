@@ -1,4 +1,6 @@
 ﻿using IlyfairyLib.WinApi.Attributes;
+using IlyfairyLib.WinApi.Gdi32;
+using IlyfairyLib.WinApi.WinNT;
 using System;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -121,10 +123,10 @@ namespace IlyfairyLib.WinApi.User32
         public static extern int BroadcastSystemMessageW([DWORD, _In_] uint flags, [LPDWORD, _Inout_opt_] ref uint lpInfo, [UINT, _In_] uint Msg, [WPARAM, _In_] IntPtr wParam, [LPARAM, _In_] IntPtr lParam);
 
         [DllImport("user32.dll", CharSet = CharSet.Ansi, SetLastError = true)]
-        public static extern int BroadcastSystemMessageExA([DWORD, _In_] uint flags, [LPDWORD, _Inout_opt_] ref uint lpInfo, [UINT, _In_] uint Msg, [WPARAM, _In_] IntPtr wParam, [LPARAM, _In_] IntPtr lParam, [PBSMINFO, _Out_] out BsmInfo pbsmInfo);
+        public static extern int BroadcastSystemMessageExA([DWORD, _In_] uint flags, [LPDWORD, _Inout_opt_] ref uint lpInfo, [UINT, _In_] uint Msg, [WPARAM, _In_] IntPtr wParam, [LPARAM, _In_] IntPtr lParam, [PBSMINFO, _Out_] out BSMInfo pbsmInfo);
 
         [DllImport("user32.dll", CharSet = CharSet.Unicode, SetLastError = true)]
-        public static extern int BroadcastSystemMessageExW([DWORD, _In_] uint flags, [LPDWORD, _Inout_opt_] ref uint lpInfo, [UINT, _In_] uint Msg, [WPARAM, _In_] IntPtr wParam, [LPARAM, _In_] IntPtr lParam, [PBSMINFO, _Out_] out BsmInfo pbsmInfo);
+        public static extern int BroadcastSystemMessageExW([DWORD, _In_] uint flags, [LPDWORD, _Inout_opt_] ref uint lpInfo, [UINT, _In_] uint Msg, [WPARAM, _In_] IntPtr wParam, [LPARAM, _In_] IntPtr lParam, [PBSMINFO, _Out_] out BSMInfo pbsmInfo);
         #endregion
 
         #region BuildReasonArray

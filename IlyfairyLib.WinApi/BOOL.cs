@@ -1,9 +1,11 @@
-﻿using System.Diagnostics.CodeAnalysis;
+﻿using IlyfairyLib.WinApi.Attributes;
+using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
 
 namespace IlyfairyLib.WinApi
 {
     [StructLayout(LayoutKind.Sequential, Size = 4)]
+    [BOOL]
     public struct BOOL
     {
         private readonly int value;

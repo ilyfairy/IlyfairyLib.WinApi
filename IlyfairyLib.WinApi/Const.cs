@@ -580,6 +580,8 @@
         public const int CCHILDREN_TITLEBAR = 5;
         public const int CCHILDREN_SCROLLBAR = 5;
 
+        public const int ANYSIZE_ARRAY = 1;
+
         //TODO: WinUser.h 2027line
 
     }

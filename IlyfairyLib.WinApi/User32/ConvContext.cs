@@ -1,4 +1,5 @@
 ﻿using IlyfairyLib.WinApi.Attributes;
+using IlyfairyLib.WinApi.WinNT;
 using System.Runtime.InteropServices;
 
 namespace IlyfairyLib.WinApi.User32
