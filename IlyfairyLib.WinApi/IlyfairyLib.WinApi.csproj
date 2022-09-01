@@ -10,7 +10,7 @@
 		<RepositoryUrl>https://github.com/ilyfairy/IlyfairyLib.WinApi</RepositoryUrl>
 		<RepositoryType>git</RepositoryType>
 		<PackageTags>P/Invoke,WinApi</PackageTags>
-		<Version>0.1.0-alpha</Version>
+		<Version>0.1.1-alpha</Version>
 	</PropertyGroup>
 
 	<ItemGroup>
