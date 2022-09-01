@@ -4,10 +4,7 @@ using System.Text;
 
 namespace IlyfairyLib.WinApi.Attributes
 {
-    public class BSMINFOAttribute : WinApiBaseAttribute
-    {
-    }
-    public class PBSMINFOAttribute : WinApiBaseAttribute
+    public class LCIDAttribute : WinApiBaseAttribute
     {
     }
 }

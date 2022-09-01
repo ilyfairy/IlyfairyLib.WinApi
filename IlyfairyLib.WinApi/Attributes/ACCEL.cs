@@ -6,10 +6,8 @@ namespace IlyfairyLib.WinApi.Attributes
 {
     public class ACCELAttribute : WinApiBaseAttribute
     {
-
     }
     public class LPACCELAttribute : WinApiBaseAttribute
     {
-
     }
 }

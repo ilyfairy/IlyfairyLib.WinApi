@@ -4,10 +4,10 @@ using System.Text;
 
 namespace IlyfairyLib.WinApi.Attributes
 {
-    public class BSMINFOAttribute : WinApiBaseAttribute
+    public class OVERLAPPEDAttribute : WinApiBaseAttribute
     {
     }
-    public class PBSMINFOAttribute : WinApiBaseAttribute
+    public class LPOVERLAPPEDAttribute : WinApiBaseAttribute
     {
     }
 }

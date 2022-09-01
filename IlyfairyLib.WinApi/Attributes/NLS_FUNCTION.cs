@@ -4,7 +4,7 @@ using System.Text;
 
 namespace IlyfairyLib.WinApi.Attributes
 {
-    public class COLORREFAttribute : WinApiBaseAttribute
+    public class NLS_FUNCTIONAttribute : WinApiBaseAttribute
     {
     }
 }
