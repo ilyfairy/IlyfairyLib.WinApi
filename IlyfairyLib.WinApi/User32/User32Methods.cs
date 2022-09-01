@@ -3144,10 +3144,10 @@ namespace IlyfairyLib.WinApi.User32
         public static extern BOOL PaintDesktop([HDC, _In_] IntPtr hdc);
         #endregion
 
-        #region PCURSORINFO
+        #region GetCursorInfo
         [DllImport("user32.dll")]
         [return: BOOL]
-        public static extern BOOL PCURSORINFO([PCURSORINFO, _Inout_] ref CursorInfo pci);
+        public static extern BOOL GetCursorInfo([PCURSORINFO, _Inout_] ref CursorInfo pci);
         #endregion
 
         #region PeekMessage
@@ -4127,9 +4127,7 @@ namespace IlyfairyLib.WinApi.User32
         [DllImport("user32.dll")]
         [return: BOOL]
         public static extern BOOL UnhookWindowsHook([_In_] int nCode, [HOOKPROC, _In_] HookProc pfnFilterProc);
-        #endregion
 
-        #region UnhookWindowsHookEx
         [DllImport("user32.dll")]
         [return: BOOL]
         public static extern BOOL UnhookWindowsHookEx([HHOOK, _In_] IntPtr hhk);
