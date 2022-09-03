@@ -68,7 +68,7 @@ namespace IlyfairyLib.WinApi.Kernel32
         [DllImport("kernel32.dll", CharSet = CharSet.Ansi)]
         [return: HANDLE]
         public static extern IntPtr CreateFileA([LPCSTR, _In_] byte[] lpFileName, [DWORD, _In_] FileAccess dwDesiredAccess, [DWORD, _In_] FileShare dwShareMode, [LPSECURITY_ATTRIBUTES, _In_opt_] in SECURITY_ATTRIBUTES lpSecurityAttributes, [DWORD, _In_] FileMode dwCreationDisposition, [DWORD, _In_] FileAttributes dwFlagsAndAttributes, [HANDLE, _In_opt_] IntPtr hTemplateFile);
-        
+
         [DllImport("kernel32.dll", CharSet = CharSet.Ansi)]
         [return: HANDLE]
         public static extern IntPtr CreateFileA([LPCSTR, _In_] byte[] lpFileName, [DWORD, _In_] FileAccess dwDesiredAccess, [DWORD, _In_] FileShare dwShareMode, [LPSECURITY_ATTRIBUTES, _In_opt_] IntPtr lpSecurityAttributes, [DWORD, _In_] FileMode dwCreationDisposition, [DWORD, _In_] FileAttributes dwFlagsAndAttributes, [HANDLE, _In_opt_] IntPtr hTemplateFile);
@@ -76,7 +76,7 @@ namespace IlyfairyLib.WinApi.Kernel32
         [DllImport("kernel32.dll", CharSet = CharSet.Unicode)]
         [return: HANDLE]
         public static extern IntPtr CreateFileW([LPCWSTR, _In_] string lpFileName, [DWORD, _In_] FileAccess dwDesiredAccess, [DWORD, _In_] FileShare dwShareMode, [LPSECURITY_ATTRIBUTES, _In_opt_] in SECURITY_ATTRIBUTES lpSecurityAttributes, [DWORD, _In_] FileMode dwCreationDisposition, [DWORD, _In_] FileAttributes dwFlagsAndAttributes, [HANDLE, _In_opt_] IntPtr hTemplateFile);
-        
+
         [DllImport("kernel32.dll", CharSet = CharSet.Unicode)]
         [return: HANDLE]
         public static extern IntPtr CreateFileW([LPCWSTR, _In_] string lpFileName, [DWORD, _In_] FileAccess dwDesiredAccess, [DWORD, _In_] FileShare dwShareMode, [LPSECURITY_ATTRIBUTES, _In_opt_] IntPtr lpSecurityAttributes, [DWORD, _In_] FileMode dwCreationDisposition, [DWORD, _In_] FileAttributes dwFlagsAndAttributes, [HANDLE, _In_opt_] IntPtr hTemplateFile);
@@ -189,7 +189,7 @@ namespace IlyfairyLib.WinApi.Kernel32
         [DllImport("kernel32.dll")]
         [return: DWORD]
         public static extern uint SuspendThread([HANDLE, _In_] IntPtr hThread);
-        
+
         [DllImport("kernel32.dll")]
         [return: DWORD]
         public static extern uint ResumeThread([HANDLE, _In_] IntPtr hThread);
@@ -325,6 +325,33 @@ namespace IlyfairyLib.WinApi.Kernel32
         [DllImport("kernel32.dll")]
         [return: HANDLE]
         public static extern BOOL OpenProcess([DWORD, _In_] ProcessAccess dwDesiredAccess, [BOOL, _In_] BOOL bInheritHandle, [DWORD, _In_] uint dwProcessId);
+
+        [DllImport("kernel32.dll")]
+        [return: BOOL]
+        public static extern BOOL AttachConsole([DWORD, _In_] uint dwProcessId);
+
+        #region DeleteFile
+        [DllImport("kernel32.dll", CharSet = CharSet.Ansi)]
+        [return: BOOL]
+        public static extern BOOL DeleteFileA([LPCSTR, _In_] byte[] lpFileName);
+
+        [DllImport("kernel32.dll", CharSet = CharSet.Unicode)]
+        [return: BOOL]
+        public static extern BOOL DeleteFileW([LPCWSTR, _In_] string lpFileName);
+        #endregion
+
+        [DllImport("kernel32.dll")]
+        [return: BOOL]
+        public static extern BOOL SetSystemTime([SYSTEMTIME, Ptr, _In_, CONST] in SYSTEMTIME lpSystemTime);
+
+        [DllImport("kernel32.dll")]
+        [return: VOID]
+        public static extern void Sleep([DWORD, _In_] uint dwMilliseconds);
+
+        [DllImport("kernel32.dll")]
+        [return: VOID]
+        public static extern void WakeByAddressSingle([DWORD, _In_] IntPtr Address);
+
 
     }
 

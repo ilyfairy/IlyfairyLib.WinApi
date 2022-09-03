@@ -2841,6 +2841,14 @@ namespace IlyfairyLib.WinApi.User32
         [return: HICON]
         public static extern IntPtr LoadIconA([HINSTANCE, _In_opt_] IntPtr hInstance, [LPCSTR, _In_] byte[] lpIconName);
 
+        [DllImport("user32.dll", CharSet = CharSet.Ansi)]
+        [return: HICON]
+        public static extern IntPtr LoadIconA([HINSTANCE, _In_opt_] IntPtr hInstance, [LPCSTR, _In_] IntPtr lpIconName);
+
+        [DllImport("user32.dll", CharSet = CharSet.Unicode)]
+        [return: HICON]
+        public static extern IntPtr LoadIconW([HINSTANCE, _In_opt_] IntPtr hInstance, [LPCWSTR, _In_] IntPtr lpIconName);
+
         [DllImport("user32.dll", CharSet = CharSet.Unicode)]
         [return: HICON]
         public static extern IntPtr LoadIconW([HINSTANCE, _In_opt_] IntPtr hInstance, [LPCWSTR, _In_] string lpIconName);
@@ -3271,11 +3279,11 @@ namespace IlyfairyLib.WinApi.User32
 
         [DllImport("user32.dll", CharSet = CharSet.Ansi)]
         [return: ATOM]
-        public static extern ushort RegisterClassExA([WNDCLASSEXA, Ptr, CONST, _In_] ref WNDCLASSA lpWndClass);
+        public static extern ushort RegisterClassExA([WNDCLASSEXA, Ptr, CONST, _In_] ref WNDCLASSEXA lpWndClass);
 
         [DllImport("user32.dll", CharSet = CharSet.Unicode)]
         [return: ATOM]
-        public static extern ushort RegisterClassExW([WNDCLASSEXW, Ptr, CONST, _In_] ref WNDCLASSW lpWndClass);
+        public static extern ushort RegisterClassExW([WNDCLASSEXW, Ptr, CONST, _In_] ref WNDCLASSEXW lpWndClass);
         #endregion
 
         #region RegisterClipboardFormat
