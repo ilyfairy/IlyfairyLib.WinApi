@@ -21,3 +21,4 @@ Now all user32.dll exposed api is done
 Library      | All apis     | Done
 -------------|------------------|-------------
 [user32.dll](./dll/user32.md)|1006|758
+kernel32.dll|1904|66
