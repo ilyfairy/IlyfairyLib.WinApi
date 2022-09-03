@@ -13,7 +13,7 @@ namespace IlyfairyLib.WinApi.User32
         public int xyThumbTop;
         public int xyThumbBottom;
         public int reserved;
-        [DWORD] public unsafe fixed uint rgstate[Const.CCHILDREN_SCROLLBAR + 1];
+        [DWORD] public unsafe fixed uint rgstate[User32Const.CCHILDREN_SCROLLBAR + 1];
     }
 
 

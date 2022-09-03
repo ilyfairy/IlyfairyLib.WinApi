@@ -1,6 +1,8 @@
 ﻿using System;
+using System.ComponentModel;
 using System.IO;
 using System.Runtime.InteropServices;
+using System.Runtime.InteropServices.ComTypes;
 using System.Text;
 using IlyfairyLib.WinApi.Attributes;
 using IlyfairyLib.WinApi.WinNT;
@@ -112,34 +114,219 @@ namespace IlyfairyLib.WinApi.Kernel32
         [DllImport("kernel32.dll")]
         [return: BOOL]
         public static extern BOOL LockFile([HANDLE, _In_] IntPtr hFile, [DWORD, _In_] uint dwFileOffsetLow, [DWORD, _In_] uint dwFileOffsetHigh, [DWORD, _In_] uint nNumberOfBytesToLockLow, [DWORD, _In_] uint nNumberOfBytesToLockHigh);
-            
+
         [DllImport("kernel32.dll")]
         [return: BOOL]
         public static extern BOOL LockFileEx([HANDLE, _In_] IntPtr hFile, [DWORD, _In_] uint dwFlags, [DWORD, _Reserved_] uint dwReserved, [DWORD, _In_] uint nNumberOfBytesToLockLow, [DWORD, _In_] uint nNumberOfBytesToLockHigh, [LPOVERLAPPED, _Inout_] ref OVERLAPPED lpOverlapped);
         #endregion
 
+        [DllImport("kernel32.dll")]
+        [return: LPVOID]
+        public static extern unsafe void* HeapAlloc([HANDLE, _In_] IntPtr hHeap, [DWORD, _In_] uint dwFlags, [SIZE_T, _In_] UIntPtr dwBytes);
 
+        [DllImport("kernel32.dll")]
+        [return: HANDLE]
+        public static extern IntPtr GetCurrentProcess();
 
+        [DllImport("kernel32.dll")]
+        [return: DWORD]
+        public static extern uint GetCurrentProcessId();
 
+        [DllImport("kernel32.dll")]
+        [return: VOID]
+        public static extern void ExitProcess([UINT, _In_] uint uExitCode);
 
+        [DllImport("kernel32.dll")]
+        [return: BOOL]
+        public static extern BOOL TerminateProcess([HANDLE, _In_] IntPtr hProcess, [UINT, _In_] uint uExitCode);
 
+        [DllImport("kernel32.dll")]
+        [return: BOOL]
+        public static extern BOOL GetExitCodeProcess([HANDLE, _In_] IntPtr hProcess, [LPDWORD, _Out_] out uint lpExitCode);
 
+        [DllImport("kernel32.dll")]
+        [return: BOOL]
+        public static extern BOOL SwitchToThread();
 
+        [DllImport("kernel32.dll")]
+        [return: HANDLE]
+        public static extern IntPtr GetCurrentThread();
+
+        [DllImport("kernel32.dll")]
+        [return: DWORD]
+        public static extern uint GetCurrentThreadId();
+
+        [DllImport("kernel32.dll")]
+        [return: HANDLE]
+        public static extern BOOL OpenThread([DWORD, _In_] uint dwDesiredAccess, [BOOL, _In_] BOOL bInheritHandle, [DWORD, _In_] uint dwThreadId);
+
+        [DllImport("kernel32.dll")]
+        [return: BOOL]
+        public static extern BOOL SetThreadPriority([HANDLE, _In_] IntPtr hThread, [_In_] int nPriority);
+
+        [DllImport("kernel32.dll")]
+        [return: BOOL]
+        public static extern BOOL SetThreadPriorityBoost([HANDLE, _In_] IntPtr hThread, [BOOL, _In_] BOOL bDisablePriorityBoost);
+
+        [DllImport("kernel32.dll")]
+        [return: BOOL]
+        public static extern BOOL GetThreadPriorityBoost([HANDLE, _In_] IntPtr hThread, [PBOOL, _Out_] out BOOL pDisablePriorityBoost);
+
+        [DllImport("kernel32.dll")]
+        public static extern int GetThreadPriority([HANDLE, _In_] IntPtr hThread);
+
+        [DllImport("kernel32.dll")]
+        public static extern void ExitThread([DWORD, _In_] uint dwExitCode);
+
+        [DllImport("kernel32.dll")]
+        [return: BOOL]
+        public static extern BOOL TerminateThread([HANDLE, _In_] IntPtr hThread, [DWORD, _In_] uint dwExitCode);
+
+        [DllImport("kernel32.dll")]
+        [return: BOOL]
+        public static extern BOOL GetExitCodeThread([HANDLE, _In_] IntPtr hThread, [LPDWORD, _Out_] out uint lpExitCode);
+
+        [DllImport("kernel32.dll")]
+        [return: DWORD]
+        public static extern uint SuspendThread([HANDLE, _In_] IntPtr hThread);
+        
+        [DllImport("kernel32.dll")]
+        [return: DWORD]
+        public static extern uint ResumeThread([HANDLE, _In_] IntPtr hThread);
+
+        [DllImport("kernel32.dll")]
+        [return: DWORD]
+        public static extern uint TlsAlloc();
+
+        [DllImport("kernel32.dll")]
+        [return: LPVOID]
+        public static extern unsafe IntPtr TlsGetValue([DWORD, _In_] uint dwTlsIndex);
+
+        [DllImport("kernel32.dll")]
+        [return: BOOL]
+        public static extern BOOL TlsSetValue([DWORD, _In_] uint dwTlsIndex, [LPVOID, _In_opt_] IntPtr lpTlsValue);
+
+        [DllImport("kernel32.dll")]
+        [return: BOOL]
+        public static extern BOOL TlsFree([DWORD, _In_] uint dwTlsIndex);
+
+        #region CreateProcess
+        [DllImport("kernel32.dll", CharSet = CharSet.Ansi)]
+        [return: BOOL]
+        public static extern BOOL CreateProcessA([LPCSTR, _In_opt_] byte[] lpApplicationName, [LPSTR, _Inout_opt_] byte[] lpCommandLine, [LPSECURITY_ATTRIBUTES, _In_opt_] in SECURITY_ATTRIBUTES lpProcessAttributes, [LPSECURITY_ATTRIBUTES, _In_opt_] in SECURITY_ATTRIBUTES lpThreadAttributes, [BOOL, _In_] BOOL bInheritHandles, [DWORD, _In_] uint dwCreationFlags, [LPVOID, _In_opt_] IntPtr lpEnvironment, [LPCSTR, _In_opt_] byte[] lpCurrentDirectory, [LPSTARTUPINFOA, _In_] in STARTUPINFOA lpStartupInfo, [LPPROCESS_INFORMATION, _Out_] out PROCESS_INFORMATION lpProcessInformation);
+
+        [DllImport("kernel32.dll", CharSet = CharSet.Unicode)]
+        [return: BOOL]
+        public static extern BOOL CreateProcessW([LPCSTR, _In_opt_] string lpApplicationName, [LPSTR, _Inout_opt_] char[] lpCommandLine, [LPSECURITY_ATTRIBUTES, _In_opt_] in SECURITY_ATTRIBUTES lpProcessAttributes, [LPSECURITY_ATTRIBUTES, _In_opt_] in SECURITY_ATTRIBUTES lpThreadAttributes, [BOOL, _In_] BOOL bInheritHandles, [DWORD, _In_] uint dwCreationFlags, [LPVOID, _In_opt_] IntPtr lpEnvironment, [LPCSTR, _In_opt_] string lpCurrentDirectory, [LPSTARTUPINFOW, _In_] in STARTUPINFOW lpStartupInfo, [LPPROCESS_INFORMATION, _Out_] out PROCESS_INFORMATION lpProcessInformation);
+        #endregion
+
+        [DllImport("kernel32.dll")]
+        [return: BOOL]
+        public static extern BOOL SetProcessShutdownParameters([DWORD, _In_] uint dwLevel, [DWORD, _In_] uint dwFlags);
+
+        [DllImport("kernel32.dll")]
+        [return: DWORD]
+        public static extern uint GetProcessVersion([DWORD, _In_] uint ProcessId);
+
+        #region GetStartupInfoW
+        [DllImport("kernel32.dll", CharSet = CharSet.Unicode)]
+        [return: VOID]
+        public static extern void GetStartupInfoW([LPSTARTUPINFOW, _Out_] out STARTUPINFOW lpStartupInfo);
+        #endregion
+
+        #region CreateProcessAsUser
+        [DllImport("kernel32.dll", CharSet = CharSet.Ansi)]
+        [return: BOOL]
+        public static extern BOOL CreateProcessAsUserA([HANDLE, _In_opt_] IntPtr hToken, [LPCSTR, _In_opt_] byte[] lpApplicationName, [LPSTR, _Inout_opt_] byte[] lpCommandLine, [LPSECURITY_ATTRIBUTES, _In_opt_] in SECURITY_ATTRIBUTES lpProcessAttributes, [LPSECURITY_ATTRIBUTES, _In_opt_] in SECURITY_ATTRIBUTES lpThreadAttributes, [BOOL, _In_] BOOL bInheritHandles, [DWORD, _In_] uint dwCreationFlags, [LPVOID, _In_opt_] IntPtr lpEnvironment, [LPCSTR, _In_opt_] byte[] lpCurrentDirectory, [LPSTARTUPINFOA, _In_] STARTUPINFOA lpStartupInfo, [LPPROCESS_INFORMATION, _Out_] out PROCESS_INFORMATION lpProcessInformation);
+
+        [DllImport("kernel32.dll", CharSet = CharSet.Unicode)]
+        [return: BOOL]
+        public static extern BOOL CreateProcessAsUserW([HANDLE, _In_opt_] IntPtr hToken, [LPCWSTR, _In_opt_] string lpApplicationName, [LPWSTR, _Inout_opt_] char[] lpCommandLine, [LPSECURITY_ATTRIBUTES, _In_opt_] in SECURITY_ATTRIBUTES lpProcessAttributes, [LPSECURITY_ATTRIBUTES, _In_opt_] in SECURITY_ATTRIBUTES lpThreadAttributes, [BOOL, _In_] BOOL bInheritHandles, [DWORD, _In_] uint dwCreationFlags, [LPVOID, _In_opt_] IntPtr lpEnvironment, [LPCWSTR, _In_opt_] string lpCurrentDirectory, [LPSTARTUPINFOW, _In_] STARTUPINFOW lpStartupInfo, [LPPROCESS_INFORMATION, _Out_] out PROCESS_INFORMATION lpProcessInformation);
+        #endregion
+
+        #region QueueUserAPC
+        [DllImport("kernel32.dll")]
+        [return: DWORD]
+        public static extern uint QueueUserAPC([PAPCFUNC, _In_] PAPCFunc pfnAPC, [HANDLE, _In_] IntPtr hThread, [ULONG_PTR, _In_] UIntPtr dwData);
+        #endregion
+
+        [DllImport("kernel32.dll")]
+        [return: BOOL]
+        public static extern BOOL GetProcessTimes([HANDLE, _In_] IntPtr hProcess, [LPFILETIME, _Out_] out FILETIME lpCreationTime, [LPFILETIME, _Out_] out FILETIME lpExitTime, [LPFILETIME, _Out_] out FILETIME lpKernelTime, [LPFILETIME, _Out_] out FILETIME lpUserTime);
+
+        #region GetProcAddress
+#if NET5_0_OR_GREATER
+        [DllImport("kernel32.dll")]
+        [return: FARPROC]
+        public static extern unsafe delegate* unmanaged<void> GetProcAddress([HMODULE, _In_] IntPtr hModule, [LPCSTR, _In_] byte[] lpProcName);
+
+        [DllImport("kernel32.dll",CharSet = CharSet.Ansi)]
+        [return: FARPROC]
+        public static extern unsafe delegate* unmanaged<void> GetProcAddress([HMODULE, _In_] IntPtr hModule, [LPCSTR, _In_] string lpProcName);
+#else
+        [DllImport("kernel32.dll")]
+        [return: FARPROC]
+        public static extern IntPtr GetProcAddress([HMODULE, _In_] IntPtr hModule, [LPCSTR, _In_] byte[] lpProcName);
+
+        [DllImport("kernel32.dll", CharSet = CharSet.Ansi)]
+        [return: FARPROC]
+        public static extern IntPtr GetProcAddress([HMODULE, _In_] IntPtr hModule, [LPCSTR, _In_] string lpProcName);
+#endif
+        #endregion
+
+        #region GetModuleHandle
+        [DllImport("kernel32.dll", CharSet = CharSet.Ansi)]
+        [return: HMODULE]
+        public static extern IntPtr GetModuleHandleA([LPCSTR, _In_opt_] byte[] lpModuleName);
+
+        [DllImport("kernel32.dll", CharSet = CharSet.Unicode)]
+        [return: HMODULE]
+        public static extern IntPtr GetModuleHandleW([LPCWSTR, _In_opt_] string lpModuleName);
+
+        [DllImport("kernel32.dll", CharSet = CharSet.Ansi)]
+        [return: BOOL]
+        public static extern BOOL GetModuleHandleExA([DWORD, _In_] uint dwFlags, [LPCSTR, _In_opt_] byte[] lpModuleName, [HMODULE, Ptr, _Out_] out IntPtr phModule);
+
+        [DllImport("kernel32.dll", CharSet = CharSet.Unicode)]
+        [return: BOOL]
+        public static extern BOOL GetModuleHandleExW([DWORD, _In_] uint dwFlags, [LPCWSTR, _In_opt_] string lpModuleName, [HMODULE, Ptr, _Out_] out IntPtr phModule);
+        #endregion
+
+        #region LoadLibrary
+        [DllImport("kernel32.dll", CharSet = CharSet.Ansi)]
+        [return: HMODULE]
+        public static extern IntPtr LoadLibraryA([LPCSTR, _In_] byte[] lpLibFileName);
+
+        [DllImport("kernel32.dll", CharSet = CharSet.Unicode)]
+        [return: HMODULE]
+        public static extern IntPtr LoadLibraryW([LPCWSTR, _In_] string lpLibFileName);
+
+        [DllImport("kernel32.dll", CharSet = CharSet.Ansi)]
+        [return: HMODULE]
+        public static extern IntPtr LoadLibraryExA([LPCSTR, _In_] byte[] lpLibFileName, [HANDLE, _Reserved_] IntPtr hFile, [DWORD, _In_] uint dwFlags);
+
+        [DllImport("kernel32.dll", CharSet = CharSet.Unicode)]
+        [return: HMODULE]
+        public static extern IntPtr LoadLibraryExW([LPCWSTR, _In_] string lpLibFileName, [HANDLE, _Reserved_] IntPtr hFile, [DWORD, _In_] uint dwFlags);
+        #endregion
+
+        [DllImport("kernel32.dll")]
+        [return: HGLOBAL]
+        public static extern IntPtr LoadResource([HMODULE, _In_opt_] IntPtr hModule, [HRSRC, _In_] IntPtr hResInfo);
+
+        #region LoadString
+        [DllImport("kernel32.dll", CharSet = CharSet.Ansi)]
+        public static extern int LoadStringA([HINSTANCE, _In_opt_] IntPtr hInstance, [UINT, _In_] uint uID, [LPSTR, _Out_writes_to_] byte[] lpBuffer, [_In_] int cchBufferMax);
+
+        [DllImport("kernel32.dll", CharSet = CharSet.Unicode)]
+        public static extern int LoadStringW([HINSTANCE, _In_opt_] IntPtr hInstance, [UINT, _In_] uint uID, [LPSTR, _Out_writes_to_] StringBuilder lpBuffer, [_In_] int cchBufferMax);
+        #endregion
+
+        [DllImport("kernel32.dll")]
+        [return: HANDLE]
+        public static extern BOOL OpenProcess([DWORD, _In_] ProcessAccess dwDesiredAccess, [BOOL, _In_] BOOL bInheritHandle, [DWORD, _In_] uint dwProcessId);
 
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -153,4 +340,10 @@ namespace IlyfairyLib.WinApi.Kernel32
     [PTHREAD_START_ROUTINE]
     [return: DWORD]
     public delegate uint PThreadStartRouting([LPVOID] IntPtr lpThreadParameter);
+
+    [PAPCFUNC]
+    [return: VOID]
+    public delegate void PAPCFunc([ULONG_PTR, _In_] UIntPtr Parameter);
+
+    public delegate void FARPROC();
 }

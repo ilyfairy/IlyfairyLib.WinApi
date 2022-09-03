@@ -4,7 +4,7 @@ using System.Text;
 
 namespace IlyfairyLib.WinApi.Attributes
 {
-    public class ACCESS_MASKAttribute : WinApiBaseAttribute
+    public class QUEUE_USER_APC_FLAGSAttribute : WinApiBaseAttribute
     {
     }
 }

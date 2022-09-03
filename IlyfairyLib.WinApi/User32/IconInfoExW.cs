@@ -15,7 +15,7 @@ namespace IlyfairyLib.WinApi.User32
         [HBITMAP] public IntPtr hbmMask;
         [HBITMAP] public IntPtr hbmColor;
         [WORD] public ushort wResID;
-        [CHAR] public unsafe fixed char szModName[Const.MAX_PATH];
-        [CHAR] public unsafe fixed char szResName[Const.MAX_PATH];
+        [CHAR] public unsafe fixed char szModName[User32Const.MAX_PATH];
+        [CHAR] public unsafe fixed char szResName[User32Const.MAX_PATH];
     }
 }

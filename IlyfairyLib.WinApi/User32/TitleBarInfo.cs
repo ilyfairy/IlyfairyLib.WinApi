@@ -9,7 +9,7 @@ namespace IlyfairyLib.WinApi.User32
     {
         [DWORD] public uint cbSize;
         [RECT] public RECT rcTitleBar;
-        [DWORD] public unsafe fixed uint rgstate[Const.CCHILDREN_TITLEBAR + 1];
+        [DWORD] public unsafe fixed uint rgstate[User32Const.CCHILDREN_TITLEBAR + 1];
     }
 
 
