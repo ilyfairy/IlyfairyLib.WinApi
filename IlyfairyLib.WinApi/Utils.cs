@@ -30,23 +30,25 @@ namespace IlyfairyLib.WinApi.Utils
 
         public static unsafe IntPtr ToIntPtr(this string str)
         {
-            return GetObjectAddress(str) + 4 + sizeof(IntPtr);
+            return GetObjectAddress(str) + sizeof(IntPtr) + 4;
         }
 
         public static unsafe char* ToPointer(this string str)
         {
-            return (char*)(GetObjectAddress(str) + 4 + sizeof(IntPtr)).ToPointer();
-        }
-
-        public static unsafe T* ToPointer<T>(this T[] str) where T : unmanaged
-        {
-            return (T*)(GetObjectAddress(str) + 8 + sizeof(IntPtr)).ToPointer();
+            return (char*)(GetObjectAddress(str) + sizeof(IntPtr) + 4).ToPointer();
         }
 
         public static unsafe IntPtr ToIntPtr<T>(this T[] str) where T : unmanaged
         {
-            return (GetObjectAddress(str) + 8 + sizeof(IntPtr));
+            return (GetObjectAddress(str) + sizeof(IntPtr)*2);
         }
+
+        public static unsafe T* ToPointer<T>(this T[] str) where T : unmanaged
+        {
+            return (T*)(GetObjectAddress(str) + sizeof(IntPtr)*2).ToPointer();
+        }
+
+        public static unsafe int SizeOf<T>(this T t) => System.Runtime.CompilerServices.Unsafe.SizeOf<T>();
 
     }
 }
