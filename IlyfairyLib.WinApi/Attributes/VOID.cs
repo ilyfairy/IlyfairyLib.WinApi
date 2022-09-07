@@ -4,13 +4,16 @@ using System.Text;
 
 namespace IlyfairyLib.WinApi.Attributes
 {
-    public class LPVOIDAttribute : WinApiBaseAttribute
+    public class VOIDAttribute : WinApiBaseAttribute
     {
     }
     public class PVOIDAttribute : WinApiBaseAttribute
     {
     }
-    public class VOIDAttribute : WinApiBaseAttribute
+    public class LPVOIDAttribute : WinApiBaseAttribute
+    {
+    }
+    public class LPCVOIDAttribute : WinApiBaseAttribute
     {
     }
 }

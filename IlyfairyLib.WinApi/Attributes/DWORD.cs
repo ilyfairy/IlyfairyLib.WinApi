@@ -7,6 +7,9 @@ namespace IlyfairyLib.WinApi.Attributes
     public class DWORDAttribute : WinApiBaseAttribute
     {
     }
+    public class PDWORDAttribute : WinApiBaseAttribute
+    {
+    }
     public class LPDWORDAttribute : WinApiBaseAttribute
     {
     }

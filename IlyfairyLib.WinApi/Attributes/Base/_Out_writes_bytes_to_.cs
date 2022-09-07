@@ -4,10 +4,7 @@ using System.Text;
 
 namespace IlyfairyLib.WinApi.Attributes
 {
-    public class ULONGAttribute : WinApiBaseAttribute
-    {
-    }
-    public class PULONGAttribute : WinApiBaseAttribute
+    public class _Out_writes_bytes_to_Attribute : WinApiBaseAttribute
     {
     }
 }

@@ -324,7 +324,7 @@ namespace IlyfairyLib.WinApi.Kernel32
 
         [DllImport("kernel32.dll")]
         [return: HANDLE]
-        public static extern BOOL OpenProcess([DWORD, _In_] ProcessAccess dwDesiredAccess, [BOOL, _In_] BOOL bInheritHandle, [DWORD, _In_] uint dwProcessId);
+        public static extern IntPtr OpenProcess([DWORD, _In_] ProcessAccess dwDesiredAccess, [BOOL, _In_] BOOL bInheritHandle, [DWORD, _In_] uint dwProcessId);
 
         [DllImport("kernel32.dll")]
         [return: BOOL]
@@ -352,12 +352,38 @@ namespace IlyfairyLib.WinApi.Kernel32
         [return: VOID]
         public static extern void WakeByAddressSingle([DWORD, _In_] IntPtr Address);
 
+        #region VirtualProtect
+        [DllImport("kernel32.dll")]
+        [return: BOOL]
+        public static extern BOOL VirtualProtect([LPVOID, _In_] IntPtr lpAddress, [SIZE_T, _In_] UIntPtr dwSize, [DWORD, _In_] PageAccess flNewProtect, [PDWORD, _Out_] out PageAccess lpflOldProtect);
+
+        [DllImport("kernel32.dll")]
+        [return: BOOL]
+        public static extern BOOL VirtualProtectEx([HANDLE, _In_] IntPtr hProcess, [LPVOID, _In_] IntPtr lpAddress, [SIZE_T, _In_] UIntPtr dwSize, [DWORD, _In_] PageAccess flNewProtect, [PDWORD, _Out_] out PageAccess lpflOldProtect);
+        #endregion
+
+        [DllImport("kernel32.dll")]
+        [return: BOOL]
+        public static extern BOOL VirtualProtectFromApp([PVOID, _In_] IntPtr Address, [SIZE_T, _In_] UIntPtr Size, [ULONG, _In_] PageAccess NewProtection, [PULONG, _Out_] out PageAccess OldProtection);
+
+        #region VirtualQuery
+        [DllImport("kernel32.dll")]
+        [return: SIZE_T]
+        public static extern UIntPtr VirtualQuery([LPCVOID, _In_opt_] IntPtr lpAddress, [PMEMORY_BASIC_INFORMATION, _Out_writes_bytes_to_] out MEMORY_BASIC_INFORMATION lpBuffer, [SIZE_T, _In_] UIntPtr dwLength);
+
+        [DllImport("kernel32.dll")]
+        [return: SIZE_T]
+        public static extern UIntPtr VirtualQuery([LPCVOID, _In_opt_] IntPtr lpAddress, [PMEMORY_BASIC_INFORMATION, _Out_writes_bytes_to_] out MEMORY_BASIC_INFORMATION32 lpBuffer, [SIZE_T, _In_] UIntPtr dwLength);
+
+        [DllImport("kernel32.dll")]
+        [return: SIZE_T]
+        public static extern UIntPtr VirtualQuery([LPCVOID, _In_opt_] IntPtr lpAddress, [PMEMORY_BASIC_INFORMATION, _Out_writes_bytes_to_] out MEMORY_BASIC_INFORMATION64 lpBuffer, [SIZE_T, _In_] UIntPtr dwLength);
+        #endregion
+
+
+
 
     }
-
-
-
-
 
 
 
