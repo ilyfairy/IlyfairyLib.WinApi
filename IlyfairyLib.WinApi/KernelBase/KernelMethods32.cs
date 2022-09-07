@@ -407,7 +407,9 @@ namespace IlyfairyLib.WinApi.KernelBase
         #endregion
 
 
-
+        [DllImport("kernel32.dll")]
+        [return: HWND]
+        public static extern IntPtr GetConsoleWindow();
 
 
 

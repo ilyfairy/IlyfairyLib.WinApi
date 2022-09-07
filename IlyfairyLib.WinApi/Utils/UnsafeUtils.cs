@@ -2,7 +2,7 @@
 
 namespace IlyfairyLib.WinApi.Utils
 {
-    public static class Utils
+    public static class UnsafeUtils
     {
         /// <summary>
         /// Get the address of a variable on the stack
