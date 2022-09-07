@@ -1,4 +1,4 @@
-﻿namespace IlyfairyLib.WinApi.Kernel32
+﻿namespace IlyfairyLib.WinApi.KernelBase
 {
     public enum PageAccess : uint
     {

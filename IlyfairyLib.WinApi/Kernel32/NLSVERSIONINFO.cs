@@ -1,7 +1,7 @@
 ﻿using System.Runtime.InteropServices;
 using IlyfairyLib.WinApi.Attributes;
 
-namespace IlyfairyLib.WinApi.Kernel32
+namespace IlyfairyLib.WinApi.KernelBase
 {
     [StructLayout(LayoutKind.Sequential)]
     [NLSVERSIONINFO]

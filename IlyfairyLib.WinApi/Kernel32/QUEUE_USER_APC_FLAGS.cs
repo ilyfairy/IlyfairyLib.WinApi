@@ -1,6 +1,6 @@
 ﻿using IlyfairyLib.WinApi.Attributes;
 
-namespace IlyfairyLib.WinApi.Kernel32
+namespace IlyfairyLib.WinApi.KernelBase
 {
     [QUEUE_USER_APC_FLAGS]
     public enum QUEUE_USER_APC_FLAGS

@@ -7,9 +7,9 @@ using System.Text;
 using IlyfairyLib.WinApi.Attributes;
 using IlyfairyLib.WinApi.WinNT;
 
-namespace IlyfairyLib.WinApi.Kernel32
+namespace IlyfairyLib.WinApi.KernelBase
 {
-    public static class Kernel32Methods
+    public static class KernelBaseMethods
     {
         #region AccessCheck
         [DllImport("kernel32.dll")]
@@ -380,6 +380,38 @@ namespace IlyfairyLib.WinApi.Kernel32
         public static extern UIntPtr VirtualQuery([LPCVOID, _In_opt_] IntPtr lpAddress, [PMEMORY_BASIC_INFORMATION, _Out_writes_bytes_to_] out MEMORY_BASIC_INFORMATION64 lpBuffer, [SIZE_T, _In_] UIntPtr dwLength);
         #endregion
 
+        [DllImport("kernel32.dll")]
+        [return: BOOL]
+        public static extern BOOL WaitOnAddress([VOID, Ptr, _In_reads_bytes_] IntPtr Address, [PVOID, _In_reads_bytes_] IntPtr CompareAddress, [SIZE_T, _In_] UIntPtr AddressSize, [DWORD, _In_opt_] uint dwMilliseconds);
+
+        [DllImport("kernel32.dll")]
+        [return: VOID]
+        public static extern void WakeByAddressAll([PVOID, _In_] IntPtr Address);
+
+        #region WriteFile
+        [DllImport("kernel32.dll")]
+        [return: BOOL]
+        public static extern unsafe BOOL WriteFile([HANDLE, _In_] IntPtr hFile, [LPCVOID, _In_reads_bytes_opt_] void* lpBuffer, [DWORD, _In_] uint nNumberOfBytesToWrite, [LPDWORD, _Out_opt_] out uint lpNumberOfBytesWritten, [LPOVERLAPPED, _Inout_opt_] ref OVERLAPPED lpOverlapped);
+
+        [DllImport("kernel32.dll")]
+        [return: BOOL]
+        public static extern unsafe BOOL WriteFile([HANDLE, _In_] IntPtr hFile, [LPCVOID, _In_reads_bytes_opt_] byte[] lpBuffer, [DWORD, _In_] uint nNumberOfBytesToWrite, [LPDWORD, _Out_opt_] out uint lpNumberOfBytesWritten, [LPOVERLAPPED, _Inout_opt_] ref OVERLAPPED lpOverlapped);
+
+        [DllImport("kernel32.dll")]
+        [return: BOOL]
+        public static extern unsafe BOOL WriteFileEx([HANDLE, _In_] IntPtr hFile, [LPCVOID, _In_reads_bytes_opt_] void* lpBuffer, [DWORD, _In_] uint nNumberOfBytesToWrite, [LPOVERLAPPED, _Inout_] ref OVERLAPPED lpOverlapped, [LPOVERLAPPED_COMPLETION_ROUTINE, _In_] LPOVERLAPPED_COMPLETION_ROUTINE lpCompletionRoutine);
+
+        [DllImport("kernel32.dll")]
+        [return: BOOL]
+        public static extern unsafe BOOL WriteFileEx([HANDLE, _In_] IntPtr hFile, [LPCVOID, _In_reads_bytes_opt_] byte[] lpBuffer, [DWORD, _In_] uint nNumberOfBytesToWrite, [LPOVERLAPPED, _Inout_] ref OVERLAPPED lpOverlapped, [LPOVERLAPPED_COMPLETION_ROUTINE, _In_] LPOVERLAPPED_COMPLETION_ROUTINE lpCompletionRoutine);
+        #endregion
+
+
+
+
+
+
+
 
 
 
@@ -397,6 +429,10 @@ namespace IlyfairyLib.WinApi.Kernel32
     [PAPCFUNC]
     [return: VOID]
     public delegate void PAPCFunc([ULONG_PTR, _In_] UIntPtr Parameter);
+
+    [LPOVERLAPPED_COMPLETION_ROUTINE]
+    [return: VOID]
+    public delegate void LPOVERLAPPED_COMPLETION_ROUTINE([DWORD, _In_] uint dwErrorCode, [DWORD, _In_] uint dwNumberOfBytesTransfered, [LPOVERLAPPED, _Inout_] ref OVERLAPPED lpOverlapped);
 
     public delegate void FARPROC();
 }
