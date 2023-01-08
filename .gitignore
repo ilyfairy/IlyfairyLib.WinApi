@@ -366,3 +366,5 @@ Test/
 TestClassLibrary/
 InternalApi/
 WindowTest/
+/CppTest/CppTest.vcxproj.filters
+/CppTest/CppTest.vcxproj

@@ -11,7 +11,7 @@ namespace IlyfairyLib.WinApi
         private readonly int value;
         public BOOL(bool val)
         {
-            value = val ? 0 : 1;
+            value = val ? 1 : 0;
         }
         public BOOL(int val)
         {
